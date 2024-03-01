@@ -1,0 +1,74 @@
+[
+    {
+        "clock": {
+            "format": "{:%H:%M}",
+            "interval": 1,
+            "tooltip": true,
+            "tooltip-format": "{:%Y-%m-%d}",
+            "rotate": 90
+        },
+        "cpu": {
+            "format": "󰍛 {usage}%",
+            "interval": 1
+        },
+        "custom/launcher": {
+            "format": " ",
+            "on-click": "pkill rofi || rofi2",
+            "tooltip": false
+        },
+        "custom/powermenu": {
+            "format": "",
+            "on-click": "pkill rofi || ~/.config/rofi/powermenu/type-3/powermenu.sh",
+            "tooltip": false
+        },
+        "layer": "top",
+        "memory": {
+            "format": "󰻠 {percentage}%",
+            "interval": 1,
+            "states": {
+                "warning": 85
+            }
+        },
+        "network": {
+            "format-disconnected": "󰌙",
+            "format-ethernet": "󰌘",
+            "format-linked": "󰖪",
+            "format-wifi": "󰖩",
+            "interval": 1,
+            "tooltip": false
+        },
+        "position": "left",
+        "pulseaudio": {
+            "format": "{icon}",
+            "format-icons": {
+                "default": [
+                    "",
+                    "",
+                    ""
+                ]
+            },
+            "format-muted": "󰖁",
+            "on-click": "pamixer -t",
+            "scroll-step": 2,
+            "tooltip": true,
+            "tooltip-format": "{volume}%"
+        },
+        "tray": {
+            "icon-size": 15,
+            "spacing": 5
+        },
+        "modules-center": [],
+        "modules-left": [
+            "custom/launcher"
+        ],
+        "modules-right": [
+            "pulseaudio",
+            "memory",
+            "cpu",
+            "temperature",
+            "network",
+            "tray",
+            "clock"
+        ]
+    }
+]

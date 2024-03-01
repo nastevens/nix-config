@@ -1,0 +1,36 @@
+{ config, pkgs, pkgs-unstable, ... }:
+let
+  plugins = pkgs.tmuxPlugins // (pkgs.callPackage ./grayspace-plugin.nix { })
+    // (pkgs.callPackage ./menus-plugin.nix { inherit (config.xdg) cacheHome; })
+    // (pkgs.callPackage ./suspend-plugin.nix { }) // {
+      inherit (pkgs-unstable.tmuxPlugins) session-wizard;
+    };
+in {
+  programs.tmux = {
+    enable = true;
+
+    baseIndex = 1;
+    clock24 = true;
+    customPaneNavigationAndResize = true;
+    keyMode = "vi";
+    shortcut = "a";
+    terminal = "tmux-256color";
+    extraConfig = builtins.readFile ./tmux.conf;
+
+    # These options are set by tmux-sensible but then overridden by the nix
+    # defaults, which are different.
+    # TODO: submit patch to make these match tmux-sensible
+    aggressiveResize = true;
+    escapeTime = 0;
+    historyLimit = 50000;
+
+    plugins = with plugins; [
+      grayspace
+      menus
+      mode-indicator
+      suspend
+      yank
+      session-wizard
+    ];
+  };
+}
