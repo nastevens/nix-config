@@ -2,6 +2,7 @@
   imports = [
     ./alacritty.nix
     ./dunst.nix
+    ./tealdeer.nix
     ./firefox.nix
     ./git.nix
     ./hypr
