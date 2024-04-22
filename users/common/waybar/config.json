@@ -63,9 +63,6 @@
         ],
         "modules-right": [
             "pulseaudio",
-            "memory",
-            "cpu",
-            "temperature",
             "network",
             "tray",
             "clock"
