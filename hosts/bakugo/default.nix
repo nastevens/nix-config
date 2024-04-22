@@ -83,6 +83,7 @@
     pkgs-unstable.hypridle
     pkgs-unstable.hyprpaper
     btrfs-progs
+    diskonaut
   ];
 
   programs.hyprland = {
