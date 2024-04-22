@@ -82,6 +82,7 @@
     hunspellDicts.en_US
     pkgs-unstable.hypridle
     pkgs-unstable.hyprpaper
+    btrfs-progs
   ];
 
   programs.hyprland = {
