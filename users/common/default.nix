@@ -34,7 +34,6 @@
     gnupg
     neofetch
     maestral
-    maestral-gui
     fd
     bat
     gping
