@@ -1,11 +1,12 @@
 { config, pkgs, pkgs-unstable, ... }:
 let
-  plugins = pkgs.tmuxPlugins // (pkgs.callPackage ./grayspace-plugin.nix { })
+  plugins = pkgs.tmuxPlugins
+    // (pkgs.callPackage ./grayspace-plugin.nix { })
     // (pkgs.callPackage ./menus-plugin.nix { inherit (config.xdg) cacheHome; })
-    // (pkgs.callPackage ./suspend-plugin.nix { }) // {
-      inherit (pkgs-unstable.tmuxPlugins) session-wizard;
-    };
-in {
+    // (pkgs.callPackage ./suspend-plugin.nix { })
+    // { inherit (pkgs-unstable.tmuxPlugins) session-wizard; };
+in
+{
   programs.tmux = {
     enable = true;
 
