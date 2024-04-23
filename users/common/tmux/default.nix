@@ -20,7 +20,6 @@ in
 
     # These options are set by tmux-sensible but then overridden by the nix
     # defaults, which are different.
-    # TODO: submit patch to make these match tmux-sensible
     aggressiveResize = true;
     escapeTime = 0;
     historyLimit = 50000;

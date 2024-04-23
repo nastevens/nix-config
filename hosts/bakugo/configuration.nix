@@ -82,7 +82,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [ ];
     shell = pkgs.zsh;
-    # TODO: auto-add keys for not the current machine from a central list of these
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAKxVfeh+zYTcMfUbzTHaFyqorD0ODcdKehTJpUH5eQr bakugo-20210502"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP7U1kF0BA+5OOe8Xw2E9aEK+UVfxloLjRLQhh69uKsf lain-20210502"

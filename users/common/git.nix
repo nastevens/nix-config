@@ -1,6 +1,5 @@
 { pkgs, lib, inputs, ... }: {
   home.packages = with pkgs; [ git-lfs git-utils ];
-  # TODO: add GPG signing to commits
   programs.git = {
     enable = true;
     delta = {
