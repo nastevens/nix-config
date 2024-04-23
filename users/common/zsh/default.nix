@@ -41,16 +41,20 @@
       bindkey -e
 
       # autocompletion using arrow keys, based on history
-      bindkey '^[OA' history-search-backward
-      bindkey '^[OB' history-search-forward
+      autoload -U up-line-or-beginning-search
+      autoload -U down-line-or-beginning-search
+      zle -N up-line-or-beginning-search
+      zle -N down-line-or-beginning-search
+      bindkey "$terminfo[kcuu1]" up-line-or-beginning-search
+      bindkey "$terminfo[kcud1]" down-line-or-beginning-search 
 
       # ctrl-w will delete one path component per press
-      my-backward-delete-word() {
+      backward-delete-word-to-slash() {
         local WORDCHARS=''${WORDCHARS/\//}
         zle backward-delete-word
       }
-      zle -N my-backward-delete-word
-      bindkey '^W' my-backward-delete-word
+      zle -N backward-delete-word-to-slash
+      bindkey '^W' backward-delete-word-to-slash
     '';
     envExtra = ''
       # Causing problems with Nix man pages
