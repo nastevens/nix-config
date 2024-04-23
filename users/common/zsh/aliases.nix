@@ -10,6 +10,7 @@
   c = "clear";
   df = "df -h";
   grep = "grep --colour=auto";
+  j = "just";
   open = "xdg-open";
   ping = "gping";
   rmf = "rm -rf";

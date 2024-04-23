@@ -1,3 +1,6 @@
+default:
+  @just --list --justfile {{justfile()}}
+
 deploy:
   sudo nixos-rebuild switch --flake .
 
@@ -18,13 +21,20 @@ history:
 repl:
   nix repl -f flake:nixpkgs
 
-clean:
-  # remove all generations older than 7 days
-  sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
+# run all mainteance ops: prune, gc, and optimize
+clean: prune gc optimize
 
+# remove all generations older than 30 days
+prune:
+  sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 30d
+
+# garbage collect all unused nix store entries
 gc:
-  # garbage collect all unused nix store entries
   sudo nix-collect-garbage --delete-old
+
+# hard link identical files in store
+optimize:
+  nix-store --optimise
 
 waybar-clean:
     rm -rf ${HOME}/.config/waybar
