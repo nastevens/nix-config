@@ -77,4 +77,8 @@
     enable = true;
     serverAliveInterval = 60;
   };
+
+  home.sessionVariables = {
+    DROPBOX = "/home/nick/Dropbox";
+  };
 }
