@@ -14,7 +14,7 @@
     hardware.url = "github:nixos/nixos-hardware";
 
     hypridle.url = "github:hyprwm/hypridle";
-    
+
     hyprland.url = "github:hyprwm/Hyprland";
 
     hyprpaper.url = "github:hyprwm/hyprpaper";
@@ -27,10 +27,19 @@
       url = "github:github/gitignore";
       flake = false;
     };
+
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
   outputs =
-    { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, ... }@inputs:
+    { self
+    , nixpkgs
+    , nixpkgs-unstable
+    , home-manager
+    , hyprland
+    , rust-overlay
+    , ...
+    }@inputs:
     let
       inherit (self) outputs;
 
@@ -45,7 +54,8 @@
             pkgs-unstable = import nixpkgs-unstable { inherit system; };
           };
         };
-    in {
+    in
+    {
       devShells = forAllSystems (system:
         let pkgs = nixpkgs.legacyPackages.${system};
         in import ./shell.nix { inherit pkgs; });
@@ -59,7 +69,20 @@
       nixosModules = import ./modules/nixos;
 
       nixosConfigurations = {
-        bakugo = mkSystem [ hyprland.nixosModules.default ./hosts/bakugo ];
+        bakugo = mkSystem [
+          hyprland.nixosModules.default
+          ./hosts/bakugo
+          ({ pkgs, ... }: {
+            nixpkgs.overlays = [ rust-overlay.overlays.default ];
+            # https://github.com/oxalica/rust-overlay/blob/master/README.md#cheat-sheet-common-usage-of-rust-bin
+            environment.systemPackages = [
+              (pkgs.rust-bin.stable.latest.default.override {
+                extensions = [ "rust-src" ];
+                targets = [ "armv7-unknown-linux-gnueabihf" ];
+              })
+            ];
+          })
+        ];
       };
 
       overlays = import ./overlays { inherit inputs; };
