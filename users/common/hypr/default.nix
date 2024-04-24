@@ -40,7 +40,7 @@
   services.hyprpaper = {
     enable = true;
     preloads = [ "/etc/moon_landing.jpg" ];
-    wallpapers = [ "/etc/moon_landing.jpg" ];
+    wallpapers = [ ",/etc/moon_landing.jpg" ];
     splash = true;
   };
 }
