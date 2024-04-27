@@ -67,6 +67,8 @@
     mindustry-wayland
     amdgpu_top
     deluge
+    _1password
+    _1password-gui
   ];
 
   services.gnome-keyring.enable = true;
@@ -76,6 +78,11 @@
   programs.ssh = {
     enable = true;
     serverAliveInterval = 60;
+    matchBlocks = {
+      "*" = {
+        extraOptions.IdentityAgent = "~/.1password/agent.sock";
+      };
+    };
   };
 
   home.sessionVariables = {

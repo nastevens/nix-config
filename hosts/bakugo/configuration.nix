@@ -80,7 +80,6 @@
     isNormalUser = true;
     description = "Nick Stevens";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAKxVfeh+zYTcMfUbzTHaFyqorD0ODcdKehTJpUH5eQr bakugo-20210502"
