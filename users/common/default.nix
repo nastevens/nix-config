@@ -66,6 +66,7 @@
     mate.caja
     mindustry-wayland
     amdgpu_top
+    deluge
   ];
 
   services.gnome-keyring.enable = true;

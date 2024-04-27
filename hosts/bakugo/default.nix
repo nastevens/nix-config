@@ -84,6 +84,7 @@
     pkgs-unstable.hyprpaper
     btrfs-progs
     diskonaut
+    wireguard-tools
   ];
 
   programs.hyprland = {
