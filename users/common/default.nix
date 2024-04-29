@@ -4,7 +4,7 @@
     ./dunst.nix
     ./tealdeer.nix
     ./firefox.nix
-    ./git.nix
+    ./git
     ./hypr
     ./rofi
     ./tmux

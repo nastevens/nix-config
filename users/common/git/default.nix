@@ -28,6 +28,17 @@
       pull.ff = "only";
       rebase.autosquash = true;
       url."https://github.com".insteadOf = "git://github.com";
+
+      # Sign Git commits using key from 1Password
+      user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH+lTG1ancKWBWdk/qgv0h+wGMfMWVcm9BNLw5RtpDXt";
+      gpg = {
+        format = "ssh";
+        ssh = {
+          program = "${pkgs._1password-gui}/bin/op-ssh-sign";
+          allowedSignersFile = builtins.toPath ./git/allowed-signers;
+        };
+      };
+      commit.gpgsign = true;
     };
     aliases = {
       authors =
