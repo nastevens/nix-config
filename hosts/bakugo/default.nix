@@ -1,5 +1,6 @@
 { inputs, outputs, config, pkgs, pkgs-unstable, ... }: {
   imports = [
+    ./1password.nix
     ./configuration.nix
     #./nvidia.nix
     ../common

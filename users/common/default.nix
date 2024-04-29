@@ -67,8 +67,6 @@
     mindustry-wayland
     amdgpu_top
     deluge
-    _1password
-    _1password-gui
   ];
 
   services.gnome-keyring.enable = true;
