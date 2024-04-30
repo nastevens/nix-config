@@ -90,7 +90,7 @@
 
   programs.hyprland = {
     enable = true;
-    package = pkgs-unstable.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
   # programs.hyprlock = {
