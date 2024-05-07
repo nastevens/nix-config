@@ -6,10 +6,6 @@
 
   # Bootloader.
   boot.loader = {
-    #efi = {
-    #  efiSysMountPoint = "/boot/efi";
-    #  canTouchEfiVariables = true;
-    #};
     grub = {
       enable = true;
       device = "nodev";
@@ -18,22 +14,6 @@
     };
     timeout = 10;
   };
-
-  #fileSystems = {
-  #  "/boot/efi" = {
-  #    device = "/dev/disk/by-uuid/0255-F0D5";
-  #    fsType = "vfat";
-  #  };
-  #};
-  networking.hostName = "bakugo"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -131,12 +111,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

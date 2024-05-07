@@ -2,6 +2,7 @@
   imports = [
     ./1password.nix
     ./configuration.nix
+    ./network.nix
     #./nvidia.nix
     ../common
   ];
@@ -17,8 +18,6 @@
     users.nick = import ../../users/nick;
   };
 
-  networking.hostName = "bakugo";
-  #system = "x86_64-linux";
   nixpkgs = {
     overlays = with outputs.overlays; [ additions modifications ];
     config.allowUnfree = true;
@@ -55,25 +54,12 @@
   '';
 
   environment.etc."moon_landing.jpg".source = ./moon_landing.jpg;
-  #networking.nameservers = [ "192.168.2.4#pi.hole" ];
-  #services.resolved = {
-  #  enable = true;
-  #  dnssec = "true";
-  #  domains = [ "~." ];
-  #  fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-  #};
+
 
   services.printing = {
     enable = true;
     drivers = [ pkgs.brlaser ];
   };
-
-  # Trying to fix mDNS issues with printer, octopi, etc
-  # https://github.com/NixOS/nixpkgs/issues/98050#issuecomment-1471678276
-  services.avahi.enable = true;
-  services.resolved.enable = true;
-  networking.networkmanager.enable = true;
-  networking.networkmanager.connectionConfig."connection.mdns" = 2;
 
   programs.dconf.enable = true;
 
