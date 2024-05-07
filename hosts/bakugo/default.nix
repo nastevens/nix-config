@@ -4,7 +4,6 @@
     ./configuration.nix
     ./network.nix
     ./nfs.nix
-    #./nvidia.nix
     ../common
   ];
   hardware.opengl.enable = true;
