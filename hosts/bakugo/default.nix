@@ -3,6 +3,7 @@
     ./1password.nix
     ./configuration.nix
     ./network.nix
+    ./nfs.nix
     #./nvidia.nix
     ../common
   ];
