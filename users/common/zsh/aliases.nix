@@ -15,5 +15,6 @@
   ping = "gping";
   rmf = "rm -rf";
   su = "su -";
-  vim = "nvim";
+  # Temporary as I develop my nix-ified neovim config
+  vim = "nix run ~/neovim-nix/.# --";
 }
