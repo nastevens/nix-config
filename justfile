@@ -1,11 +1,17 @@
 default:
   @just --list --justfile {{justfile()}}
 
-deploy:
+switch:
   sudo nixos-rebuild switch --flake .
 
+boot:
+  sudo nixos-rebuild boot --flake .
+
+build:
+  sudo nixos-rebuild build --flake .
+
 debug:
-  sudo nixos-rebuild switch --flake . --show-trace --verbose
+  sudo nixos-rebuild build --flake . --show-trace --verbose
 
 up:
   nix flake update
