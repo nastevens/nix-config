@@ -8,10 +8,10 @@ boot:
   sudo nixos-rebuild boot --flake .
 
 build:
-  sudo nixos-rebuild build --flake .
+  nixos-rebuild build --flake .
 
 debug:
-  sudo nixos-rebuild build --flake . --show-trace --verbose
+  nixos-rebuild build --flake . --show-trace --verbose
 
 up:
   nix flake update
