@@ -15,8 +15,6 @@
 
     hypridle.url = "github:hyprwm/hypridle";
 
-    hyprland.url = "github:hyprwm/Hyprland";
-
     hyprpaper.url = "github:hyprwm/hyprpaper";
 
     hyprpicker.url = "github:hyprwm/hyprpicker";
@@ -36,7 +34,6 @@
     , nixpkgs
     , nixpkgs-unstable
     , home-manager
-    , hyprland
     , rust-overlay
     , ...
     }@inputs:
@@ -70,7 +67,6 @@
 
       nixosConfigurations = {
         bakugo = mkSystem [
-          hyprland.nixosModules.default
           ./hosts/bakugo
           ({ pkgs, ... }: {
             nixpkgs.overlays = [ rust-overlay.overlays.default ];
