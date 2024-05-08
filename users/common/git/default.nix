@@ -74,6 +74,10 @@
       (gitignoreGlobal "macOS")
       (gitignoreGlobal "Vim")
       (gitignoreGlobal "Windows")
+      ''
+        # Local direnv cache
+        .direnv
+      ''
     ];
   };
 }
