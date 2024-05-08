@@ -86,4 +86,9 @@
   home.sessionVariables = {
     DROPBOX = "/home/nick/Dropbox";
   };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 }
