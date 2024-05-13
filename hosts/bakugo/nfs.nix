@@ -18,6 +18,9 @@ in
     "/home/nick/nas/media" = vashNfs { name = "media"; };
     "/home/nick/nas/torrents" = vashNfs { name = "torrents"; };
     "/home/nick/nas/mythtv" = vashNfs { name = "mythtv"; };
-    "/home/nick/nas/NetBackup" = vashNfs { name = "NetBackup"; };
+    "/home/nick/nas/NetBackup" = vashNfs {
+      name = "NetBackup";
+      extraOptions = [ "ro" ];
+    };
   };
 }
