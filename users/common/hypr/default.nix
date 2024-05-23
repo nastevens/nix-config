@@ -11,6 +11,7 @@
     shotman
     waybar
     bibata-cursors
+    openzone-cursors
     mate.caja
     pamixer
     playerctl

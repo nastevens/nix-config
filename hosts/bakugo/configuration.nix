@@ -95,6 +95,7 @@
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
+    vistafonts
   ];
 
   programs.zsh.enable = true;

@@ -73,6 +73,7 @@
     btrfs-progs
     diskonaut
     wireguard-tools
+    v4l-utils
   ];
 
   programs.hyprland = {

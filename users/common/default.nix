@@ -43,10 +43,12 @@
     bc
     gping
     just
+    tokei
 
     # multimedia
     pithos
     pianobar
+    mate.atril
 
     # chat
     (discord.override { nss = nss_latest; })
@@ -54,6 +56,7 @@
     element-desktop
     signal-desktop
     slack
+    zulip
 
     # gaming
     prismlauncher
