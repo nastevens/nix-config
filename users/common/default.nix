@@ -44,6 +44,8 @@
     gping
     just
     tokei
+    htop
+    termdown
 
     # multimedia
     pithos
