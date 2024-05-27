@@ -1,10 +1,5 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
-  imports = [
-    inputs.hypridle.homeManagerModules.default
-    inputs.hyprpaper.homeManagerModules.default
-  ];
-
   home.packages = with pkgs; [
     dunst
     wl-clipboard
@@ -16,7 +11,7 @@
     pamixer
     playerctl
     xdg-desktop-portal-hyprland
-    eww-wayland
+    eww
   ];
 
   wayland.windowManager.hyprland = {
@@ -28,19 +23,21 @@
 
   services.hypridle = {
     enable = true;
-    listeners = [
+    settings.listener = [
       {
         timeout = 600;
-        onTimeout = "hyprctl dispatch dpms off";
-        onResume = "hyprctl dispatch dpms on";
+        on-timeout = "hyprctl dispatch dpms off";
+        on-resume = "hyprctl dispatch dpms on";
       }
     ];
   };
 
   services.hyprpaper = {
     enable = true;
-    preloads = [ "/etc/moon_landing.jpg" ];
-    wallpapers = [ ",/etc/moon_landing.jpg" ];
-    splash = true;
+    settings = {
+      preload = [ "/etc/moon_landing.jpg" ];
+      wallpaper = [ ",/etc/moon_landing.jpg" ];
+      splash = false;
+    };
   };
 }

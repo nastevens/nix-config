@@ -1,4 +1,4 @@
-{ inputs, outputs, config, pkgs, pkgs-unstable, ... }: {
+{ inputs, outputs, config, pkgs, ... }: {
   imports = [
     ./1password.nix
     ./configuration.nix
@@ -13,7 +13,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = {
-      inherit inputs outputs pkgs-unstable;
+      inherit inputs outputs;
       nixosConfig = config;
     };
     users.nick = import ../../users/nick;
@@ -68,8 +68,8 @@
     libreoffice-qt
     hunspell
     hunspellDicts.en_US
-    pkgs-unstable.hypridle
-    pkgs-unstable.hyprpaper
+    hypridle
+    hyprpaper
     btrfs-progs
     diskonaut
     wireguard-tools

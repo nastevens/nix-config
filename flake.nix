@@ -2,20 +2,15 @@
   description = "Nick's NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hardware.url = "github:nixos/nixos-hardware";
-
-    hypridle.url = "github:hyprwm/hypridle";
-
-    hyprpaper.url = "github:hyprwm/hyprpaper";
 
     hyprpicker.url = "github:hyprwm/hyprpicker";
 
@@ -32,7 +27,6 @@
   outputs =
     { self
     , nixpkgs
-    , nixpkgs-unstable
     , home-manager
     , rust-overlay
     , ...
@@ -43,12 +37,11 @@
       forAllSystems = nixpkgs.lib.genAttrs [ "x86_64-linux" ];
 
       mkSystem = modules:
-        nixpkgs.lib.nixosSystem rec {
+        nixpkgs.lib.nixosSystem {
           inherit modules;
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs outputs;
-            pkgs-unstable = import nixpkgs-unstable { inherit system; };
           };
         };
     in

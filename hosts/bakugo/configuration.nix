@@ -33,22 +33,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Configure keymap in X11
-  #  services.xserver = {
-  #    enable = true;
-  #    layout = "us";
-  #    xkbVariant = "";
-  #    displayManager = {
-  #      sddm.enable = true;
-  #      defaultSession = "none+awesome";
-  #    };
-  #
-  #    windowManager.awesome = {
-  #      enable = true;
-  #    };
-  #  };
-
-  #  programs.sway.enable = true;
   security.polkit.enable = true;
 
   sound.enable = true;

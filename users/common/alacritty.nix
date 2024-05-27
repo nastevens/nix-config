@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }: {
+{ pkgs, ... }: {
   programs.alacritty = let
     fontStyles = {
       normal = { style = "Regular"; };
@@ -30,10 +30,6 @@
     in builtins.concatStringsSep "|" (builtins.map (p: "${p}:") protocols);
   in {
     enable = true;
-
-    # TODO: Missing the home-manager config to use TOML output, causing a 
-    # warning. Wait until 24.05.
-    # package = pkgs-unstable.alacritty;
 
     settings = {
       colors.primary.background = "#000000";

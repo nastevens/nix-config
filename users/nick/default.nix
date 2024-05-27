@@ -1,7 +1,6 @@
 { ... }: {
   imports = [
     ../common
-    #../common/sway.nix
   ];
 
   home = {

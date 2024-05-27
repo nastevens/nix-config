@@ -1,4 +1,4 @@
-{ outputs, pkgs, pkgs-unstable, ... }: {
+{ outputs, pkgs, ... }: {
   imports = [
     ./alacritty.nix
     ./dunst.nix
@@ -10,7 +10,6 @@
     ./tmux
     ./waybar
     ./zsh
-    ./sway.nix
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   home.packages = with pkgs; [
@@ -64,7 +63,7 @@
     prismlauncher
 
     # other
-    pkgs-unstable.anki-bin
+    anki-bin
     gnucash
     prusa-slicer
     inkscape
