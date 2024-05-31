@@ -45,6 +45,7 @@
     tokei
     htop
     termdown
+    mmv
 
     # multimedia
     pithos
@@ -71,6 +72,7 @@
     mindustry-wayland
     amdgpu_top
     deluge
+    cargo-information
   ];
 
   services.gnome-keyring.enable = true;
