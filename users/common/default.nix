@@ -73,6 +73,7 @@
     amdgpu_top
     deluge
     cargo-information
+    freeplane
   ];
 
   services.gnome-keyring.enable = true;
