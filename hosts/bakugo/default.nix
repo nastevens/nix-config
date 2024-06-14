@@ -79,4 +79,6 @@
   programs.hyprland = {
     enable = true;
   };
+
+  services.tailscale.enable = true;
 }
