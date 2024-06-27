@@ -7,7 +7,7 @@
     ./virtualisation.nix
     ../common
   ];
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   home-manager = {
     useGlobalPkgs = true;

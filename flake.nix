@@ -12,8 +12,6 @@
 
     hardware.url = "github:nixos/nixos-hardware";
 
-    hyprpicker.url = "github:hyprwm/hyprpicker";
-
     hyprportal.url = "github:hyprwm/xdg-desktop-portal-hyprland";
 
     github-gitignore = {

@@ -69,7 +69,6 @@
     prusa-slicer
     inkscape
     mate.caja
-    mindustry-wayland
     amdgpu_top
     deluge
     cargo-information
