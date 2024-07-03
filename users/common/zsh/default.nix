@@ -61,7 +61,11 @@
       #export MANPAGER="sh -c 'bat --plain --language=man'"
 
       function help() {
-          "$@" --help 2>&1 | bathelp
+          "$@" --help 2>&1 | bat --plain --language=help
+      }
+
+      function take() {
+          mkdir -p "$1" && cd "$1"
       }
     '';
     shellAliases = import ./aliases.nix;
