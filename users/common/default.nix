@@ -73,6 +73,7 @@
     deluge
     cargo-information
     freeplane
+    zoom-us
   ];
 
   services.gnome-keyring.enable = true;
