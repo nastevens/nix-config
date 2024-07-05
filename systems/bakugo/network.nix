@@ -1,4 +1,6 @@
-{ ... }: {
+{ ... }:
+
+{
   networking = {
     hostId = "8ad2bc62";
     hostName = "bakugo";

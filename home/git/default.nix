@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, ... }: {
+{ flake, pkgs, lib, ... }: {
   home.packages = with pkgs; [ git-lfs git-utils ];
   programs.git = {
     enable = true;
@@ -65,7 +65,7 @@
     ignores = let
       gitignore = path: name:
         builtins.readFile
-        "${inputs.github-gitignore}/${path}/${name}.gitignore";
+        "${flake.inputs.github-gitignore}/${path}/${name}.gitignore";
       gitignoreGlobal = gitignore "Global";
       generate = list:
         lib.splitString "\n" (builtins.concatStringsSep "\n" list);

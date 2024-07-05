@@ -1,4 +1,4 @@
-{ outputs, pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [
     ./alacritty.nix
     ./dunst.nix
@@ -10,7 +10,7 @@
     ./tmux
     ./waybar
     ./zsh
-  ] ++ (builtins.attrValues outputs.homeManagerModules);
+  ];
 
   home.packages = with pkgs; [
     neovim
@@ -74,7 +74,13 @@
     cargo-information
     freeplane
     zoom-us
+    libreoffice-qt
+    hunspell
+    hunspellDicts.en_US
   ];
+
+  # TODO: put this in home directory instead
+  xdg.dataFile."moon_landing.jpg".source = ./moon_landing.jpg;
 
   services.gnome-keyring.enable = true;
 
