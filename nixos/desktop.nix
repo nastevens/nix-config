@@ -29,7 +29,6 @@ in
   services.gnome.gnome-keyring.enable = true;
   security.polkit.enable = true;
   security.pam.services.${me.username}.enableGnomeKeyring = true;
-  sound.enable = true;
   hardware.pulseaudio.enable = true;
 
   environment.systemPackages = with pkgs; [
