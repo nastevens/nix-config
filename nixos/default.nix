@@ -39,6 +39,7 @@
         self.nixosModules.default
         ./1password.nix
         ./desktop.nix
+        ./virt.nix
         ({ ... }: {
           home-manager.users.${config.me.username} = {
             imports = [

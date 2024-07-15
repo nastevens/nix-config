@@ -10,6 +10,7 @@
       desktop = {
         imports = [
           ./default_old.nix
+          ./virt.nix
         ];
       };
     };
