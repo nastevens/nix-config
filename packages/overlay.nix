@@ -1,6 +1,6 @@
 { ... }:
 
-self: super: {
-  git-utils = self.callPackage ./git-utils { };
-  open-slug = self.callPackage ./scripts/open-slug.nix { };
+final: prev: {
+  git-utils = prev.callPackage ./git-utils { };
+  open-slug = prev.callPackage ./scripts/open-slug.nix { };
 }
