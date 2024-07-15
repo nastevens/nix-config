@@ -16,9 +16,3 @@
     };
   };
 }
-
-# Is this needed? Goes into a HM module
-# home = {
-#   username = "nick";
-#   homeDirectory = "/home/nick";
-# };
