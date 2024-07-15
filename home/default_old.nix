@@ -54,10 +54,10 @@
 
     # chat
     (discord.override { nss = nss_latest; })
-    telegram-desktop
     element-desktop
     signal-desktop
     slack
+    telegram-desktop
     zulip
 
     # gaming
@@ -66,8 +66,6 @@
     # other
     anki-bin
     gnucash
-    prusa-slicer
-    inkscape
     mate.caja
     amdgpu_top
     deluge
@@ -77,6 +75,12 @@
     libreoffice-qt
     hunspell
     hunspellDicts.en_US
+
+    # creative
+    gimp
+    inkscape
+    pinta
+    prusa-slicer
   ];
 
   # TODO: put this in home directory instead
