@@ -48,6 +48,7 @@
     mmv
 
     # multimedia
+    loupe
     pithos
     pianobar
     mate.atril
