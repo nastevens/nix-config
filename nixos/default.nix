@@ -6,7 +6,9 @@
       default.imports = [
         self.nixosModules.home-manager
         ./i18n.nix
+        ./shell.nix
         ./ssh.nix
+        # ./tailscale.nix
         ./user.nix
         ({ pkgs, ... }: {
           environment.systemPackages = with pkgs; [
@@ -19,9 +21,6 @@
             wget
             wireguard-tools
           ];
-
-          programs.zsh.enable = true;
-          services.tailscale.enable = true;
         })
         ({ ... }: {
           home-manager = {
