@@ -49,9 +49,10 @@
 
     # multimedia
     loupe
-    pithos
-    pianobar
     mate.atril
+    mpv
+    pianobar
+    pithos
 
     # chat
     (discord.override { nss = nss_latest; })
