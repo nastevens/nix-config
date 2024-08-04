@@ -1,18 +1,24 @@
+# List available justfile jobs
 default:
   @just --list --justfile {{justfile()}}
 
+# Build NixOS and hot-switch to the new configuration
 switch:
   sudo nixos-rebuild switch --flake .
 
+# Build NixOS and use it on the next boot
 boot:
   sudo nixos-rebuild boot --flake .
 
+# Build NixOS
 build:
   nixos-rebuild build --flake .
 
+# Build NixOS with verbose error output
 debug:
   nixos-rebuild build --flake . --show-trace --verbose
 
+# Update input flake versions
 up:
   nix flake update
 
@@ -20,38 +26,29 @@ up:
 upp input:
   nix flake lock --update-input $(input)
 
-history:
-  nix profile history --profile /nix/var/nix/profiles/system
-
+# Start a Nix REPL
 repl:
   nix repl -f flake:nixpkgs
 
-# run all mainteance ops: prune, gc, and optimize
-clean: prune gc optimize
+# Run all maintenance ops
+clean: gc optimize
 
-# remove all generations older than 30 days
-prune:
-  sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 30d
-
-# garbage collect all unused nix store entries
+# Garbage collect unused nix store entries
 gc:
-  sudo nix-collect-garbage --delete-old
+  # The home-manager profiles created through the NixOS module are not being
+  # cleaned up for some reason. This manually prunes old versions.
+  nix profile wipe-history \
+    --profile ${HOME}/.local/state/nix/profiles/home-manager \
+    --older-than 30d
+  sudo nix-collect-garbage \
+    --delete-older-than 30d \
+    --option use-xdg-base-directories true
 
-# hard link identical files in store
+# Hard-link identical files in store
 optimize:
   nix-store --optimise
 
-waybar-clean:
-    rm -rf ${HOME}/.config/waybar
-
-waybar-dev: waybar-clean
-    mkdir ${HOME}/.config/waybar
-    ln -s {{justfile_directory()}}/users/common/waybar/config.json ${HOME}/.config/waybar/config
-    ln -s {{justfile_directory()}}/users/common/waybar/style.css ${HOME}/.config/waybar/style.css
-
-hyprland-clean:
-    rm -rf ${HOME}/.config/hypr
-
-hyprland-dev: hyprland-clean
-    mkdir ${HOME}/.config/hypr
-    ln -s {{justfile_directory()}}/users/common/hypr/hyprland.conf ${HOME}/.config/hypr/hyprland.conf
+# Print active gc-roots (i.e. root directories that nix won't clean up)
+gc-roots:
+    sudo -i nix-store --gc --print-roots | \
+      egrep -v '^(/nix/var|/run/current-system|/run/booted-system|/proc|{memory|{censored)'
