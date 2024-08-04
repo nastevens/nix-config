@@ -13,6 +13,49 @@ in
     vistafonts
   ];
 
+  security.polkit.enable = true;
+  security.pam.services.${me.username}.enableGnomeKeyring = true;
+  hardware.pulseaudio.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    bandwhich # Needs sudo, make available system-wide
+    glxinfo
+    hypridle
+    hyprpaper
+    pavucontrol
+    polkit_gnome
+    v4l-utils
+    xdg-utils
+  ];
+
+  # Hyprland has `exec-once`, but then we need to pipe in the path to the
+  # authentication agent. It's easier to move up to OS level and let systemd
+  # take care of it.
+  systemd.user.services.polkit-gnome-authentication-agent-1 = {
+    description = "polkit-gnome-authentication-agent-1";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
+  };
+
+  services = {
+    devmon.enable = true;
+    gnome.gnome-keyring.enable = true;
+    gvfs.enable = true;
+    printing = {
+      enable = true;
+      drivers = [ pkgs.brlaser ];
+    };
+    udisks2.enable = true;
+  };
+
   services.greetd = {
     enable = true;
     settings = {
@@ -26,31 +69,16 @@ in
     };
   };
 
-  services.gnome.gnome-keyring.enable = true;
-  security.polkit.enable = true;
-  security.pam.services.${me.username}.enableGnomeKeyring = true;
-  hardware.pulseaudio.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    bandwhich # Needs sudo, make available system-wide
-    glxinfo
-    pavucontrol
-    xdg-utils
-    hypridle
-    hyprpaper
-    v4l-utils
-  ];
-
-  services.printing = {
-    enable = true;
-    drivers = [ pkgs.brlaser ];
-  };
-
   programs.hyprland = {
     enable = true;
   };
 
   programs.dconf.enable = true;
+
+  programs.thunar.enable = true;
+
+  # Thumbnail generation
+  services.tumbler.enable = true;
 
   environment.etc."greetd/environments".text = ''
     hyprland

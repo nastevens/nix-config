@@ -2,17 +2,40 @@
 {
   home.packages = with pkgs; [
     dunst
-    wl-clipboard
-    shotman
-    waybar
-    bibata-cursors
-    openzone-cursors
-    mate.caja
+    eww
     pamixer
     playerctl
+    shotman
+    waybar
+    wl-clipboard
     xdg-desktop-portal-hyprland
-    eww
   ];
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.openzone-cursors;
+    name = "OpenZone_Black";
+    size = 16;
+  };
+
+  gtk = {
+    enable = true;
+
+    theme = {
+      package = pkgs.flat-remix-gtk;
+      name = "Flat-Remix-GTK-Grey-Dark";
+    };
+
+    iconTheme = {
+      package = pkgs.flat-remix-icon-theme;
+      name = "Flat-Remix-Blue-Dark";
+    };
+
+    font = {
+      name = "Sans";
+      size = 11;
+    };
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
