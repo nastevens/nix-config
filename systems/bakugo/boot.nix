@@ -14,15 +14,22 @@
       kernelModules = [ "dm-snapshot" ];
     };
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "kvm-amd" ];
+    kernelModules = [
+      "dm_raid"
+      "kvm-amd"
+    ];
     loader = {
       grub = {
         enable = true;
         device = "nodev";
         efiSupport = true;
-        # useOSProber = true;
       };
       timeout = 10;
+    };
+    swraid = {
+      enable = true;
+      # remove warning about unset mail
+      mdadmConf = "PROGRAM ${pkgs.coreutils}/bin/true";
     };
   };
 
