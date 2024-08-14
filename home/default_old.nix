@@ -13,45 +13,38 @@
   ];
 
   home.packages = with pkgs; [
-    neovim
-
-    # archives
-    zip
-    xz
-    unzip
-    p7zip
-
-    # utils
-    ripgrep
-    jq
+    # CLI utils
+    bat
+    bc
+    fd
     file
-    which
+    gawk
+    gnupg
     gnused
     gnutar
-    gawk
-    zstd
-    gnupg
-    neofetch
-    maestral
-    fd
-    bat
     gping
-    mdcat
     hexyl
-    viu
-    bc
-    gping
-    just
-    tokei
     htop
-    termdown
+    jq
+    just
+    maestral
+    mdcat
     mmv
+    neofetch
+    p7zip
+    ripgrep
+    termdown
+    unzip
+    viu
+    which
+    xz
+    zip
+    zstd
 
     # multimedia
     loupe
     mate.atril
     mpv
-    pianobar
     pithos
 
     # chat
@@ -66,23 +59,29 @@
     prismlauncher
 
     # other
-    anki-bin
-    gnucash
-    mate.caja
     amdgpu_top
-    deluge
+    anki-bin
     cargo-information
+    deluge
     freeplane
-    zoom-us
-    libreoffice-qt
+    gnucash
     hunspell
     hunspellDicts.en_US
+    libreoffice-qt
+    mate.caja
+    wally-cli
+    zoom-us
 
     # creative
     gimp
     inkscape
     pinta
     prusa-slicer
+
+    # global dev tools (per-language tools use local flakes)
+    gibo
+    hotspot
+    tokei
   ];
 
   # TODO: put this in home directory instead
