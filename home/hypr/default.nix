@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 {
   home.packages = with pkgs; [
     dunst
@@ -57,9 +58,9 @@
 
   services.hyprpaper = {
     enable = true;
-    settings = {
-      preload = [ "/etc/moon_landing.jpg" ];
-      wallpaper = [ ",/etc/moon_landing.jpg" ];
+    settings = let wallpaper = ./moon_landing.jpg; in {
+      preload = [ "${wallpaper}" ];
+      wallpaper = [ ",${wallpaper}" ];
       splash = false;
     };
   };

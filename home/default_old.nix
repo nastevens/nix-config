@@ -84,9 +84,6 @@
     tokei
   ];
 
-  # TODO: put this in home directory instead
-  xdg.dataFile."moon_landing.jpg".source = ./moon_landing.jpg;
-
   services.gnome-keyring.enable = true;
 
   programs.home-manager.enable = true;
