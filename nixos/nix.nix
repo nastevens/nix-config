@@ -7,6 +7,9 @@ in
   nixpkgs = {
     config = {
       allowUnfree = true;
+      permittedInsecurePackages = [
+        "jitsi-meet-1.0.8043"
+      ];
     };
     overlays = [
       (import ../packages/overlay.nix { inherit flake; inherit (pkgs) system; })
