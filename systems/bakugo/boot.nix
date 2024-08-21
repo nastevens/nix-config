@@ -11,11 +11,13 @@
         "usbhid"
         "sd_mod"
       ];
-      kernelModules = [ "dm-snapshot" ];
+      kernelModules = [
+        "dm-raid"
+        "dm-snapshot"
+      ];
     };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [
-      "dm_raid"
       "kvm-amd"
     ];
     loader = {
