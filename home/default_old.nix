@@ -1,49 +1,9 @@
 { pkgs, ... }: {
-  imports = [
-    ./alacritty.nix
-    ./dunst.nix
-    ./tealdeer.nix
-    ./firefox.nix
-    ./git
-    ./hypr
-    ./rofi
-    ./tmux
-    ./waybar
-    ./zsh
-  ];
-
   home.packages = with pkgs; [
-    # CLI utils
-    bat
-    bc
-    fd
-    file
-    gawk
-    gnupg
-    gnused
-    gnutar
-    gping
-    hexyl
-    htop
-    jq
-    just
-    maestral
-    mdcat
-    mmv
-    neofetch
-    p7zip
-    ripgrep
-    termdown
-    unzip
-    viu
-    which
-    xz
-    zip
-    zstd
-
     # multimedia
     loupe
     mate.atril
+    maestral
     mpv
     pithos
 
@@ -79,9 +39,7 @@
     prusa-slicer
 
     # global dev tools (per-language tools use local flakes)
-    gibo
     hotspot
-    tokei
   ];
 
   services.gnome-keyring.enable = true;
