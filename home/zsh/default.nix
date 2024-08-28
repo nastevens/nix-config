@@ -57,12 +57,12 @@
       zstyle ':completion:*' verbose true
 
       # ctrl-w will delete one path component per press
-      backward-delete-word-to-slash() {
-        local WORDCHARS=''${WORDCHARS/\//}
+      backward-delete-word-custom() {
+        local WORDCHARS=''$(echo ''$WORDCHARS | tr -d '/#')
         zle backward-delete-word
       }
-      zle -N backward-delete-word-to-slash
-      bindkey '^W' backward-delete-word-to-slash
+      zle -N backward-delete-word-custom
+      bindkey '^W' backward-delete-word-custom
     '';
     envExtra = ''
       # Causing problems with Nix man pages
