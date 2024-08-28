@@ -51,6 +51,11 @@
       bindkey "$terminfo[kcuu1]" up-line-or-beginning-search
       bindkey "$terminfo[kcud1]" down-line-or-beginning-search 
 
+      # compinstall completion configuration
+      zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+      zstyle ':completion:*' matcher-list "" 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=* l:|=*'
+      zstyle ':completion:*' verbose true
+
       # ctrl-w will delete one path component per press
       backward-delete-word-to-slash() {
         local WORDCHARS=''${WORDCHARS/\//}
