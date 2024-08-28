@@ -2,6 +2,7 @@
   imports = [ ./eza.nix ./zoxide.nix ];
   programs.zsh = {
     enable = true;
+    autocd = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     sessionVariables = {
@@ -9,9 +10,11 @@
       ZSH_AUTOSUGGEST_USE_ASYNC = "true";
     };
     history = {
-      expireDuplicatesFirst = true;
-      ignoreDups = true;
+      extended = true;
+      ignoreAllDups = true;
       ignoreSpace = true;
+      save = 100000;
+      size = 100000;
     };
     plugins = [
       {

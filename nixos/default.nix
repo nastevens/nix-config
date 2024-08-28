@@ -6,7 +6,6 @@
       default.imports = [
         self.nixosModules.home-manager
         ./i18n.nix
-        ./shell.nix
         ./ssh.nix
         # ./tailscale.nix
         ./user.nix
