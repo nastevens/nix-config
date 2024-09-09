@@ -15,14 +15,12 @@ in
 
   security.polkit.enable = true;
   security.pam.services.${me.username}.enableGnomeKeyring = true;
-  hardware.pulseaudio.enable = true;
 
   environment.systemPackages = with pkgs; [
     bandwhich # Needs sudo, make available system-wide
     glxinfo
     hypridle
     hyprpaper
-    pavucontrol
     polkit_gnome
     v4l-utils
     xdg-utils
