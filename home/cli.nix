@@ -11,7 +11,6 @@
     file
     gawk
     gibo
-    gnupg
     gnused
     gnutar
     gping
