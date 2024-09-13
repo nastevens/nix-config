@@ -20,7 +20,7 @@
       core = {
         autocrlf = "input";
         eol = "lf";
-        editor = "nvim";
+        editor = "nix run ~/neovim-nix/.# --";
         compression = -1;
       };
       init.defaultBranch = "main";
