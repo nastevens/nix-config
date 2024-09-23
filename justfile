@@ -31,7 +31,7 @@ repl:
   nix repl -f flake:nixpkgs
 
 # Run all maintenance ops
-clean: gc optimize
+clean: gc optimize clean-rust clean-kondo
 
 # Garbage collect unused nix store entries
 gc:
@@ -47,6 +47,14 @@ gc:
 # Hard-link identical files in store
 optimize:
   nix-store --optimise
+
+# Clean up Rust build cache
+clean-rust:
+  cargo-cache --autoclean-expensive
+
+# Clean up project build files
+clean-kondo:
+    kondo ~/dev ~/foss
 
 # Print active gc-roots (i.e. root directories that nix won't clean up)
 gc-roots:
