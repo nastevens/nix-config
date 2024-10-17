@@ -38,6 +38,7 @@
         ./1password.nix
         ./desktop.nix
         ./sound.nix
+        ./steam.nix
         ./virt.nix
         ({ ... }: {
           home-manager.users.${config.me.username} = {
