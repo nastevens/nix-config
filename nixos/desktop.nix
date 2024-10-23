@@ -8,7 +8,7 @@ in
     (nerdfonts.override { fonts = [ "Mononoki" ]; })
     dejavu_fonts
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     vistafonts
   ];

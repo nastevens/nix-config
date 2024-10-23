@@ -21,7 +21,7 @@ in
     registry.nixpkgs.flake = flake.inputs.nixpkgs;
 
     settings = {
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "root" me.username ];
     };
   };
