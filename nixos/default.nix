@@ -14,6 +14,7 @@
             btrfs-progs
             curl
             diskonaut
+            fdupes
             git
             killall
             pciutils
