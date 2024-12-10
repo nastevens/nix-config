@@ -5,8 +5,8 @@ let
 in
 {
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Mononoki" ]; })
     dejavu_fonts
+    nerd-fonts.mononoki
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
