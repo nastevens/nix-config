@@ -31,6 +31,7 @@
     libreoffice-qt
     mate.caja
     wally-cli
+    xarchiver
     zoom-us
 
     # creative
