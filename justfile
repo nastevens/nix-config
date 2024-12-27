@@ -24,7 +24,7 @@ up:
 
 # Update specific input
 upp input:
-  nix flake lock --update-input {{input}}
+  nix flake update {{input}}
 
 # Start a Nix REPL
 repl:
