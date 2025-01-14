@@ -8,9 +8,9 @@ in
   imports = [
     self.nixosModules.default
     self.nixosModules.desktop
-    ./bakugo/boot.nix
-    ./bakugo/network.nix
-    ./bakugo/nfs.nix
+    ./boot.nix
+    ./network.nix
+    ./nfs.nix
     "${self}/nixos/docker.nix"
     "${self}/nixos/nix.nix"
     "${self}/nixos/location.nix"

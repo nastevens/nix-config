@@ -28,11 +28,12 @@
         ./users
       ];
 
-      flake = {
-        nixosConfigurations = {
-          bakugo = self.nixos-flake.lib.mkLinuxSystem ./systems/bakugo.nix;
-        };
-      };
+      flake.nixosConfigurations =
+        let
+          hosts = builtins.readDir ./hosts;
+          mkLinuxSystem = name: _: self.nixos-flake.lib.mkLinuxSystem ./hosts/${name};
+        in
+        builtins.mapAttrs mkLinuxSystem hosts;
 
       perSystem = { pkgs, self', ... }: {
         packages.default = self'.packages.activate;
