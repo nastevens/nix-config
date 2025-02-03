@@ -9,7 +9,6 @@ in
     description = me.name;
     extraGroups = [ "wheel" ];
     isNormalUser = true;
-    openssh.authorizedKeys.keys = me.sshPublicKeys;
     shell = pkgs.zsh;
   };
 }

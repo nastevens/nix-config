@@ -11,6 +11,7 @@ in
     ./boot.nix
     ./network.nix
     ./nfs.nix
+    ./ssh.nix
     "${self}/nixos/docker.nix"
     "${self}/nixos/nix.nix"
     "${self}/nixos/location.nix"
