@@ -13,10 +13,10 @@
           environment.systemPackages = with pkgs; [
             btrfs-progs
             curl
-            diskonaut
             fdupes
             git
             killall
+            ncdu
             pciutils
             wget
             wireguard-tools
