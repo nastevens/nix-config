@@ -29,8 +29,8 @@
     unzip
     viu
     which
+    xan
     xh
-    xsv
     xz
     zip
     zstd
