@@ -16,6 +16,7 @@ in
 {
   fileSystems = {
     "/home/nick/nas/media" = vashNfs { name = "media"; };
+    "/home/nick/nas/taxport" = vashNfs { name = "taxport"; };
     "/home/nick/nas/torrents" = vashNfs { name = "torrents"; };
     "/home/nick/nas/mythtv" = vashNfs { name = "mythtv"; };
     "/home/nick/nas/NetBackup" = vashNfs {
