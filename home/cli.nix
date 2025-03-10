@@ -24,6 +24,7 @@
     mmv
     p7zip
     ripgrep
+    srgn
     termdown
     tokei
     unzip
