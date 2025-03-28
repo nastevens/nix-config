@@ -7,7 +7,7 @@
         self.nixosModules.home-manager
         ./i18n.nix
         ./ssh.nix
-        # ./tailscale.nix
+        ./tailscale.nix
         ./user.nix
         ({ pkgs, ... }: {
           environment.systemPackages = with pkgs; [
