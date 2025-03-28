@@ -22,7 +22,6 @@
     amdgpu_top
     anki-bin
     calibre
-    cargo-information
     deluge
     freeplane
     gnucash
