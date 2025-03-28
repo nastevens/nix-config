@@ -5,6 +5,7 @@
     angle-grinder
     bat
     bc
+    binsider
     cargo-cache
     codevis
     fd
