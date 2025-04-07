@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 pkgs.writeShellApplication {
   name = "open-slug";
   runtimeInputs = [ pkgs.xdg-utils ];

@@ -1,9 +1,25 @@
 { flake, pkgs, ... }:
 
 let
-  me = flake.config.me;
+  inherit (flake) config inputs;
+  inherit (inputs) self;
 in
 {
+  imports = [
+    self.nixosModules.default
+    ./1password.nix
+    ./sound.nix
+    ./steam.nix
+    ./virt.nix
+    ({ ... }: {
+      home-manager.users.${config.me.username} = {
+        imports = [
+          self.homeModules.desktop
+        ];
+      };
+    })
+  ];
+
   fonts.packages = with pkgs; [
     dejavu_fonts
     nerd-fonts.mononoki
@@ -14,7 +30,7 @@ in
   ];
 
   security.polkit.enable = true;
-  security.pam.services.${me.username}.enableGnomeKeyring = true;
+  security.pam.services.${config.me.username}.enableGnomeKeyring = true;
 
   environment.systemPackages = with pkgs; [
     bandwhich # Needs sudo, make available system-wide

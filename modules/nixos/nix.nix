@@ -1,6 +1,8 @@
-{ flake, pkgs, ... }:
+{ flake, lib, ... }:
 
 let
+  inherit (flake) inputs;
+  inherit (inputs) self;
   me = flake.config.me;
 in
 {
@@ -11,9 +13,7 @@ in
         "electron-32.3.3"
       ];
     };
-    overlays = [
-      (import ../packages/overlay.nix { inherit flake; inherit (pkgs) system; })
-    ];
+    overlays = lib.attrValues self.overlays;
   };
 
   nix = {
@@ -22,6 +22,10 @@ in
 
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
+      # Nullify registry for purity.
+      flake-registry = builtins.toFile
+        "empty-flake-registry.json" ''{"flakes":[],"version":2}'';
+      max-jobs = "auto";
       trusted-users = [ "root" me.username ];
     };
   };

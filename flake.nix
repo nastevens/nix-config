@@ -3,42 +3,43 @@
 
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
-    github-gitignore = {
-      url = "github:github/gitignore";
-      flake = false;
-    };
+    github-gitignore.url = "github:github/gitignore";
+    github-gitignore.flake = false;
     hardware.url = "github:nixos/nixos-hardware";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyprportal.url = "github:hyprwm/xdg-desktop-portal-hyprland";
-    nixos-flake.url = "github:srid/nixos-flake";
+    nixos-unified.url = "github:srid/nixos-unified";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    rust-overlay.url = "github:oxalica/rust-overlay";
+    # rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
-  outputs = inputs@{ self, ... }:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" "aarch64-linux" ];
-      imports = [
-        inputs.nixos-flake.flakeModule
-        ./home
-        ./nixos
-        ./users
-      ];
+  outputs = inputs:
+    inputs.nixos-unified.lib.mkFlake
+      { inherit inputs; root = ./.; };
 
-      flake.nixosConfigurations =
-        let
-          hosts = builtins.readDir ./hosts;
-          mkLinuxSystem = name: _: self.nixos-flake.lib.mkLinuxSystem ./hosts/${name};
-        in
-        builtins.mapAttrs mkLinuxSystem hosts;
+  # outputs = inputs@{ flake-parts, nixos-flake, self, ... }:
+  #   flake-parts.lib.mkFlake { inherit inputs; } {
+  #     imports = [
+  #       nixos-flake.flakeModule
+  #       ./home
+  #       ./nixos
+  #       ./users
+  #     ];
 
-      perSystem = { pkgs, self', ... }: {
-        packages.default = self'.packages.activate;
-      };
-    };
+  #     flake.nixosConfigurations =
+  #       let
+  #         hosts = builtins.readDir ./hosts;
+  #         mkLinuxSystem = name: _: self.nixos-flake.lib.mkLinuxSystem ./hosts/${name};
+  #       in
+  #       builtins.mapAttrs mkLinuxSystem hosts;
+
+  #     perSystem = { pkgs, self', ... }: {
+  #       packages.default = self'.packages.activate;
+  #     };
+
+  #     systems = [ "x86_64-linux" "aarch64-linux" ];
+  #   };
 
   # outputs =
   #   { self
