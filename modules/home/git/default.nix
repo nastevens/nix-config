@@ -62,22 +62,24 @@
         "log --branches --not --remotes=origin --remotes=upstream --no-walk --decorate --oneline";
       unwip = "reset HEAD^";
     };
-    ignores = let
-      gitignore = path: name:
-        builtins.readFile
-        "${flake.inputs.github-gitignore}/${path}/${name}.gitignore";
-      gitignoreGlobal = gitignore "Global";
-      generate = list:
-        lib.splitString "\n" (builtins.concatStringsSep "\n" list);
-    in generate [
-      (gitignoreGlobal "Linux")
-      (gitignoreGlobal "macOS")
-      (gitignoreGlobal "Vim")
-      (gitignoreGlobal "Windows")
-      ''
-        # Local direnv cache
-        .direnv
-      ''
-    ];
+    ignores =
+      let
+        gitignore = path: name:
+          builtins.readFile
+            "${flake.inputs.github-gitignore}/${path}/${name}.gitignore";
+        gitignoreGlobal = gitignore "Global";
+        generate = list:
+          lib.splitString "\n" (builtins.concatStringsSep "\n" list);
+      in
+      generate [
+        (gitignoreGlobal "Linux")
+        (gitignoreGlobal "macOS")
+        (gitignoreGlobal "Vim")
+        (gitignoreGlobal "Windows")
+        ''
+          # Local direnv cache
+          .direnv
+        ''
+      ];
   };
 }
