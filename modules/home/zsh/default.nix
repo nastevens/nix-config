@@ -39,7 +39,7 @@
         file = "nick.zsh-theme";
       }
     ];
-    initExtra = ''
+    initContent = ''
       # emacs key mode 
       bindkey -e
 
