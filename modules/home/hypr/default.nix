@@ -58,7 +58,7 @@
 
   services.hyprpaper = {
     enable = true;
-    settings = let wallpaper = ./moon_landing.jpg; in {
+    settings = let wallpaper = ./milky_way.jpg; in {
       preload = [ "${wallpaper}" ];
       wallpaper = [ ",${wallpaper}" ];
       splash = false;
