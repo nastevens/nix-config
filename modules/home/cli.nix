@@ -8,7 +8,6 @@
     binsider
     cargo-cache
     codevis
-    cmus
     fd
     file
     gawk
