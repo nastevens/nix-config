@@ -21,6 +21,7 @@ in
     registry.nixpkgs.flake = flake.inputs.nixpkgs;
 
     settings = {
+      download-buffer-size = 500000000; # 500MB
       experimental-features = [ "nix-command" "flakes" ];
       # Nullify registry for purity.
       flake-registry = builtins.toFile
