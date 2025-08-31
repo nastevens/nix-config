@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     # multimedia
     loupe
@@ -49,11 +50,19 @@
 
   programs.ssh = {
     enable = true;
-    serverAliveInterval = 60;
-    matchBlocks = {
-      "*" = {
-        extraOptions.IdentityAgent = "~/.1password/agent.sock";
-      };
+    enableDefaultConfig = false;
+    matchBlocks."*" = {
+      addKeysToAgent = "no";
+      compression = false;
+      controlMaster = "no";
+      controlPath = "~/.ssh/master-%r@%n:%p";
+      controlPersist = "no";
+      forwardAgent = false;
+      hashKnownHosts = false;
+      identityAgent = "~/.1password/agent.sock";
+      serverAliveCountMax = 3;
+      serverAliveInterval = 60;
+      userKnownHostsFile = "~/.ssh/known_hosts";
     };
   };
 
