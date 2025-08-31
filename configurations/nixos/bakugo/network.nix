@@ -23,7 +23,7 @@
 
     networks = {
       "30-wired" = {
-        matchConfig.Name = "enp5s0np0";
+        matchConfig.Name = "enx98b78520afda";
         vlan = [ "vlan3" ];
         networkConfig = {
           DHCP = "ipv4";
