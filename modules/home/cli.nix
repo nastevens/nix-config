@@ -4,7 +4,6 @@
   home.packages = with pkgs; [
     angle-grinder
     bat
-    bc
     binsider
     cargo-cache
     codevis
@@ -30,6 +29,7 @@
     tokei
     unzip
     viu
+    wcalc
     which
     xan
     xh
