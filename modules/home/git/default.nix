@@ -15,6 +15,26 @@
     enable = true;
     lfs.enable = true;
 
+    aliases = {
+      authors = "shortlog --numbered --summary --format='%an <%ae>' --no-merges";
+      ci = "commit";
+      co = "checkout";
+      cl = "clean -ndx";
+      clcl = "clean -fdx";
+      d = "diff";
+      dc = "diff --cached";
+      fap = "fetch --all --prune";
+      fapp = "pull --all --prune --ff-only";
+      graph = "log --graph --decorate --all --oneline --format='%C(green bold)%h%Creset %C(yellow bold)[%ar]%Creset %C(red bold)%d%Creset %s %C(blue bold)<%an>%Creset'";
+      ls = "lsbranch";
+      mf = "merge --ff-only";
+      mfu = "merge --ff-only upstream/master";
+      s = "status";
+      wip = "!git add -A && git commit -m WIP";
+      unpushed = "log --branches --not --remotes=origin --remotes=upstream --no-walk --decorate --oneline";
+      unwip = "reset HEAD^";
+    };
+
     ignores =
       let
         gitignore =
@@ -73,25 +93,6 @@
       };
       user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH+lTG1ancKWBWdk/qgv0h+wGMfMWVcm9BNLw5RtpDXt";
 
-      aliases = {
-        authors = "shortlog --numbered --summary --format='%an <%ae>' --no-merges";
-        ci = "commit";
-        co = "checkout";
-        cl = "clean -ndx";
-        clcl = "clean -fdx";
-        d = "diff";
-        dc = "diff --cached";
-        fap = "fetch --all --prune";
-        fapp = "pull --all --prune --ff-only";
-        graph = "log --graph --decorate --all --oneline --format='%C(green bold)%h%Creset %C(yellow bold)[%ar]%Creset %C(red bold)%d%Creset %s %C(blue bold)<%an>%Creset'";
-        ls = "lsbranch";
-        mf = "merge --ff-only";
-        mfu = "merge --ff-only upstream/master";
-        s = "status";
-        wip = "!git add -A && git commit -m WIP";
-        unpushed = "log --branches --not --remotes=origin --remotes=upstream --no-walk --decorate --oneline";
-        unwip = "reset HEAD^";
-      };
     };
   };
 }
