@@ -6,7 +6,6 @@ let
     options = [
       "user"
       "soft"
-      "intr"
       "x-systemd.automount"
       "x-systemd.idle-timeout=600"
       "noauto"
