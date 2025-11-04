@@ -9,6 +9,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyprportal.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    hyprportal.inputs.nixpkgs.follows = "nixpkgs";
     nixos-unified.url = "github:srid/nixos-unified";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # rust-overlay.url = "github:oxalica/rust-overlay";
