@@ -21,9 +21,6 @@ in
           "vista-fonts"
           "zoom"
         ];
-      permittedInsecurePackages = [
-        "electron-32.3.3"
-      ];
     };
     overlays = lib.attrValues self.overlays;
   };
