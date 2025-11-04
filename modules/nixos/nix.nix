@@ -1,9 +1,8 @@
 { flake, lib, ... }:
 
 let
-  inherit (flake) inputs;
-  inherit (inputs) self;
-  me = flake.config.me;
+  inherit (flake.config) me;
+  inherit (flake.inputs) nixpkgs self;
 in
 {
   nixpkgs = {
@@ -27,16 +26,28 @@ in
 
   nix = {
     # Make `nix shell` etc use pinned nixpkgs
-    registry.nixpkgs.flake = flake.inputs.nixpkgs;
+    registry.nixpkgs.flake = nixpkgs;
 
     settings = {
       download-buffer-size = 500000000; # 500MB
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "flakes"
+        "nix-command"
+      ];
+
       # Nullify registry for purity.
-      flake-registry = builtins.toFile
-        "empty-flake-registry.json" ''{"flakes":[],"version":2}'';
+      flake-registry = builtins.toFile "empty-flake-registry.json" (
+        builtins.toJSON {
+          flakes = [ ];
+          version = 2;
+        }
+      );
+
       max-jobs = "auto";
-      trusted-users = [ "root" me.username ];
+      trusted-users = [
+        "root"
+        me.username
+      ];
     };
   };
 }
