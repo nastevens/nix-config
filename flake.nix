@@ -12,6 +12,10 @@
     hyprportal.inputs.nixpkgs.follows = "nixpkgs";
     nixos-unified.url = "github:srid/nixos-unified";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # Downgrade to avoid 1Password GUI glitch - remove @ 8.11.18 release
+    nixpkgs-1password_81114 = {
+      url = "github:NixOS/nixpkgs/186d6ace1245bc1d56deffdc2cfc8901bae5962a";
+    };
   };
 
   outputs =
