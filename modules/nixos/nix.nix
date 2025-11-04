@@ -8,7 +8,19 @@ in
 {
   nixpkgs = {
     config = {
-      allowUnfree = true;
+      allowUnfreePredicate =
+        pkg:
+        builtins.elem (lib.getName pkg) [
+          "1password"
+          "1password-cli"
+          "1password-gui"
+          "discord"
+          "slack"
+          "steam"
+          "steam-unwrapped"
+          "vista-fonts"
+          "zoom"
+        ];
       permittedInsecurePackages = [
         "electron-32.3.3"
       ];
