@@ -25,8 +25,8 @@ in
     nerd-fonts.mononoki
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
-    vistafonts
+    noto-fonts-monochrome-emoji
+    vista-fonts
   ];
 
   security.polkit.enable = true;
@@ -34,9 +34,9 @@ in
 
   environment.systemPackages = with pkgs; [
     bandwhich # Needs sudo, make available system-wide
-    glxinfo
     hypridle
     hyprpaper
+    mesa-demos # Provides glxinfo, glxgears
     polkit_gnome
     v4l-utils
     xdg-utils
