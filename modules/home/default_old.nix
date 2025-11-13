@@ -38,7 +38,6 @@
     gimp
     inkscape
     pinta
-    prusa-slicer
 
     # global dev tools (per-language tools use local flakes)
     hotspot

@@ -18,5 +18,6 @@ in
     inherit (pkgs-1password_81114) _1password-gui;
     git-utils = final.callPackage "${packages}/git-utils" { };
     open-slug = final.callPackage "${packages}/open-slug" { };
+    prusaslicer-rename = final.callPackage "${packages}/prusaslicer-rename" { };
   }
 )

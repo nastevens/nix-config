@@ -8,6 +8,7 @@
     ./dunst.nix
     ./firefox.nix
     ./hypr
+    ./prusa.nix
     ./rofi
     ./virt.nix
     ./waybar
