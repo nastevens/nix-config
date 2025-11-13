@@ -4,7 +4,6 @@
     # multimedia
     loupe
     mate.atril
-    maestral
     mpv
     pithos
 
