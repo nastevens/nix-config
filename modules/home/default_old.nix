@@ -29,7 +29,6 @@
     hunspell
     hunspellDicts.en_US
     libreoffice-qt
-    mate.caja
     wally-cli
     xarchiver
     zoom-us
