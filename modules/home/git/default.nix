@@ -57,7 +57,7 @@
       core = {
         autocrlf = "input";
         eol = "lf";
-        editor = "nix run ~/neovim-nix/.# --";
+        editor = "nvim";
         compression = -1;
       };
       delta = {
