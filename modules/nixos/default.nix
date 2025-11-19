@@ -3,18 +3,19 @@
 let
   inherit (flake) config inputs;
   inherit (inputs) self;
-  inherit (inputs.nixvim.nixosModules) nixvim;
 in
 {
   imports = [
-    nixvim
     ./i18n.nix
-    ./neovim
     ./ssh.nix
     ./tailscale.nix
     ./user.nix
     (
       { pkgs, ... }:
+      let
+        nicksvim =
+          self.nixvimConfigurations.${pkgs.stdenv.hostPlatform.system}.nicksvim.config.build.package;
+      in
       {
         environment.systemPackages = with pkgs; [
           btrfs-progs
@@ -23,6 +24,7 @@ in
           git
           killall
           ncdu
+          nicksvim
           pciutils
           wget
           wireguard-tools
