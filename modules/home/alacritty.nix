@@ -1,17 +1,27 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.alacritty =
     let
       fontStyles = {
-        normal = { style = "Regular"; };
-        bold = { style = "Bold"; };
-        italic = { style = "Italic"; };
-        bold_italic = { style = "Bold Italic"; };
+        normal = {
+          style = "Regular";
+        };
+        bold = {
+          style = "Bold";
+        };
+        italic = {
+          style = "Italic";
+        };
+        bold_italic = {
+          style = "Bold Italic";
+        };
       };
-      fontConfig = fontFamily: fontSize:
+      fontConfig =
+        fontFamily: fontSize:
         {
           size = fontSize;
-        } // builtins.mapAttrs (_: style: style // { family = fontFamily; })
-          fontStyles;
+        }
+        // builtins.mapAttrs (_: style: style // { family = fontFamily; }) fontStyles;
       protocolList =
         let
           protocols = [
@@ -59,8 +69,10 @@
             # Recognize github slugs in strings (i.e. "nastevens/nix-config")
             # and open in browser.
             regex =
-              let an = "a-zA-Z0-9";
-              in ''["'][${an}][${an}_-]+/[${an}][${an}_.-]+["']'';
+              let
+                an = "a-zA-Z0-9";
+              in
+              ''["'][${an}][${an}_-]+/[${an}][${an}_.-]+["']'';
             command = {
               program = "${pkgs.open-slug}/bin/open-slug";
               args = [ "https://github.com" ];

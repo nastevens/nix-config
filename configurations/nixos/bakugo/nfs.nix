@@ -1,16 +1,22 @@
 { ... }:
 let
-  vashNfs = { name, extraOptions ? [ ] }: {
-    device = "vash:/volume1/${name}";
-    fsType = "nfs";
-    options = [
-      "user"
-      "soft"
-      "x-systemd.automount"
-      "x-systemd.idle-timeout=600"
-      "noauto"
-    ] ++ extraOptions;
-  };
+  vashNfs =
+    {
+      name,
+      extraOptions ? [ ],
+    }:
+    {
+      device = "vash:/volume1/${name}";
+      fsType = "nfs";
+      options = [
+        "user"
+        "soft"
+        "x-systemd.automount"
+        "x-systemd.idle-timeout=600"
+        "noauto"
+      ]
+      ++ extraOptions;
+    };
 in
 {
   fileSystems = {

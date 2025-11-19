@@ -1,5 +1,9 @@
-{ pkgs, ... }: {
-  imports = [ ./eza.nix ./zoxide.nix ];
+{ pkgs, ... }:
+{
+  imports = [
+    ./eza.nix
+    ./zoxide.nix
+  ];
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -34,8 +38,7 @@
       }
       {
         name = "nick-zsh-theme";
-        src =
-          pkgs.writeTextDir "nick.zsh-theme" (builtins.readFile ./theme.zsh);
+        src = pkgs.writeTextDir "nick.zsh-theme" (builtins.readFile ./theme.zsh);
         file = "nick.zsh-theme";
       }
     ];

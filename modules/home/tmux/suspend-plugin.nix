@@ -1,4 +1,11 @@
-{ pkgs, lib, fetchFromGitHub, tmuxPlugins, ... }: {
+{
+  pkgs,
+  lib,
+  fetchFromGitHub,
+  tmuxPlugins,
+  ...
+}:
+{
   suspend = tmuxPlugins.mkTmuxPlugin rec {
     pluginName = "suspend";
     version = "1a2f806666e0bfed37535372279fa00d27d50d14";

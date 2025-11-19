@@ -58,10 +58,14 @@
 
   services.hyprpaper = {
     enable = true;
-    settings = let wallpaper = ./milky_way.jpg; in {
-      preload = [ "${wallpaper}" ];
-      wallpaper = [ ",${wallpaper}" ];
-      splash = false;
-    };
+    settings =
+      let
+        wallpaper = ./milky_way.jpg;
+      in
+      {
+        preload = [ "${wallpaper}" ];
+        wallpaper = [ ",${wallpaper}" ];
+        splash = false;
+      };
   };
 }

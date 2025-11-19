@@ -11,13 +11,16 @@ in
     ./sound.nix
     ./steam.nix
     ./virt.nix
-    ({ ... }: {
-      home-manager.users.${config.me.username} = {
-        imports = [
-          self.homeModules.desktop
-        ];
-      };
-    })
+    (
+      { ... }:
+      {
+        home-manager.users.${config.me.username} = {
+          imports = [
+            self.homeModules.desktop
+          ];
+        };
+      }
+    )
   ];
 
   fonts.packages = with pkgs; [

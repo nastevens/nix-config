@@ -11,7 +11,10 @@ in
   virtualisation.docker = {
     enable = true;
     daemon.settings = {
-      dns = [ "1.1.1.1" "1.0.0.1" ];
+      dns = [
+        "1.1.1.1"
+        "1.0.0.1"
+      ];
     };
     storageDriver = "btrfs";
   };

@@ -1,4 +1,12 @@
-{ pkgs, lib, fetchFromGitHub, tmuxPlugins, cacheHome, ... }: {
+{
+  pkgs,
+  lib,
+  fetchFromGitHub,
+  tmuxPlugins,
+  cacheHome,
+  ...
+}:
+{
   menus = tmuxPlugins.mkTmuxPlugin rec {
     pluginName = "menus";
     version = "7fbd66d466143457f4cc990643cc0c333d1660a4";

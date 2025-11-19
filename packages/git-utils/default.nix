@@ -1,6 +1,13 @@
 { pkgs, ... }:
-let commonPkgs = with pkgs; [ coreutils git gnused unixtools.column ];
-in pkgs.symlinkJoin {
+let
+  commonPkgs = with pkgs; [
+    coreutils
+    git
+    gnused
+    unixtools.column
+  ];
+in
+pkgs.symlinkJoin {
   name = "git-utils";
   paths = [
     (pkgs.writeShellApplication {

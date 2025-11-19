@@ -1,4 +1,10 @@
-{ lib, pkgs, tmuxPlugins, ... }: {
+{
+  lib,
+  pkgs,
+  tmuxPlugins,
+  ...
+}:
+{
   grayspace = tmuxPlugins.mkTmuxPlugin rec {
     pluginName = "grayspace";
     version = "unstable";

@@ -1,10 +1,13 @@
 { config, pkgs, ... }:
 let
-  plugins = pkgs.tmuxPlugins
+  plugins =
+    pkgs.tmuxPlugins
     // (pkgs.callPackage ./grayspace-plugin.nix { })
     // (pkgs.callPackage ./menus-plugin.nix { inherit (config.xdg) cacheHome; })
     // (pkgs.callPackage ./suspend-plugin.nix { })
-    // { inherit (pkgs.tmuxPlugins) session-wizard; };
+    // {
+      inherit (pkgs.tmuxPlugins) session-wizard;
+    };
 in
 {
   programs.tmux = {
