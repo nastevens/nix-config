@@ -1,0 +1,90 @@
+extends copyright-clike
+
+snippet der Add a derive statement
+    #[derive($1)]
+
+snippet allder Add all built-in derive types
+    #[derive(Clone, Copy, Debug, Default, Hash, Eq, Ord, PartialEq, PartialOrd)]
+
+snippet asref Create AsRef impl
+    impl AsRef<$1> for $2 {
+        fn as_ref(&self) -> &$1 {
+            $3
+        }
+    }
+
+snippet default Create Default impl
+    impl Default for $1 {
+        fn default() -> Self {
+            $1 {
+                $2
+            }
+        }
+    }
+
+snippet debug Create Debug impl
+    impl std::fmt::Debug for $1 {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            write!(f, "$2", $3)
+        }
+    }
+
+snippet display Create Display impl
+    impl std::fmt::Display for $1 {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            write!(f, "$2", $3)
+        }
+    }
+
+snippet deref Create Deref impl
+    impl Deref for $1 {
+        type Target = $2;
+        fn deref(&self) -> &Self::Target {
+            $3
+        }
+    }
+
+snippet from Create From impl
+    impl From<$1> for $2} {
+        fn from(val: $1) -> $2 {
+            $3
+        }
+    }
+
+snippet en Create enum definition
+    #[derive(Debug)]
+    $1 enum $2 {
+        $3
+    }
+
+snippet st Create struct definition
+    #[derive(Debug)]
+    $1 struct $2 {
+        $3
+    }
+
+snippet stt Create tuple struct definition
+    #[derive(Debug)]
+    $1 struct $2($3)
+
+snippet stu Create unit struct definition
+    #[derive(Debug)]
+    $1 struct $2
+
+snippet as Create assert!
+    assert!($1);
+
+snippet ase Create assert_eq!
+    assert_eq!($1, $2);
+
+snippet test Create unit test
+    #[test]
+    fn $1() {
+        $2
+    }
+
+snippet testmod Create unit test module
+    #[cfg(test)]
+    mod test {
+        test$1
+    }

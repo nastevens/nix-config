@@ -281,6 +281,9 @@
     # Snippets
     luasnip = {
       enable = true;
+      fromSnipmate = [
+        { paths = ./snippets; }
+      ];
       # settings.ext_opts = {
       #   active.hl_group = "Todo";
       #   passive.hl_group = "SpecialChar";
