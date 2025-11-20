@@ -296,22 +296,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-1password_81114": {
-      "locked": {
-        "lastModified": 1762042318,
-        "narHash": "sha256-ii+o9he/0NgCe7KmPQ97XRIdYqJ5gLUAAKa6xKVfVgI=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "186d6ace1245bc1d56deffdc2cfc8901bae5962a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "186d6ace1245bc1d56deffdc2cfc8901bae5962a",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1761765539,
@@ -382,7 +366,6 @@
         "hyprportal": "hyprportal",
         "nixos-unified": "nixos-unified",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-1password_81114": "nixpkgs-1password_81114",
         "nixvim": "nixvim"
       }
     },

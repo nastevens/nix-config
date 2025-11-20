@@ -22,11 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/nixvim";
     };
-
-    # Downgrade to avoid 1Password GUI glitch - remove @ 8.11.18 release
-    nixpkgs-1password_81114 = {
-      url = "github:NixOS/nixpkgs/186d6ace1245bc1d56deffdc2cfc8901bae5962a";
-    };
   };
 
   outputs =
