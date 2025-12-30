@@ -108,6 +108,10 @@
       clangd.enable = true;
       cmake.enable = true;
       dockerls.enable = true;
+      hls = {
+        enable = true;
+        installGhc = true;
+      };
       jsonls.enable = true;
       lua_ls.enable = true;
       marksman.enable = true;
