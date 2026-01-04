@@ -63,8 +63,10 @@
         wallpaper = ./milky_way.jpg;
       in
       {
-        preload = [ "${wallpaper}" ];
-        wallpaper = [ ",${wallpaper}" ];
+        wallpaper = {
+          monitor = "";
+          path = "${wallpaper}";
+        };
         splash = false;
       };
   };
