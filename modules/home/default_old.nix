@@ -2,8 +2,8 @@
 {
   home.packages = with pkgs; [
     # multimedia
+    atril
     loupe
-    mate.atril
     mpv
     pithos
 
