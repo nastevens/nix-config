@@ -21,7 +21,8 @@
     # other
     amdgpu_top
     anki-bin
-    calibre
+    # Disabled due to build issue
+    #calibre
     deluge
     freeplane
     gnucash
