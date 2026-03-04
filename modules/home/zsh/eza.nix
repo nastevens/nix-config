@@ -6,8 +6,8 @@
   };
   programs.zsh.shellAliases = {
     ls = "eza";
-    ll = "eza -lh";
-    la = "eza -a";
-    lla = "eza -la";
+    ll = "ls -lh";
+    la = "ls -a";
+    lla = "ls -la";
   };
 }
