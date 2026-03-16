@@ -90,6 +90,9 @@ in
     enable = true;
   };
 
+  # Hints Electron apps to use Wayland
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   programs.dconf.enable = true;
 
   programs.thunar.enable = true;
