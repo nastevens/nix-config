@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     dunst
     eww
+    hyprshutdown
     pamixer
     playerctl
     shotman
