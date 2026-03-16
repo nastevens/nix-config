@@ -6,7 +6,7 @@
   "......" = "cd ../../../../..";
   bandwhich = "sudo bandwhich";
   bathelp = "bat --plain --language=help";
-  bc = "wcalc";
+  bc = "wcalc --color";
   c = "clear";
   df = "df -h";
   grep = "grep --colour=auto";
