@@ -42,7 +42,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
-    # Could use `settings` instead https://nix-community.github.io/home-manager/options.xhtml#opt-wayland.windowManager.hyprland.settings
     extraConfig = builtins.readFile ./hyprland.conf;
   };
 
