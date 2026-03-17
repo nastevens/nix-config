@@ -13,7 +13,6 @@
     signal-desktop
     slack
     telegram-desktop
-    zulip
 
     # gaming
     prismlauncher
