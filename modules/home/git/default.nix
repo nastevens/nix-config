@@ -49,25 +49,79 @@
     };
 
     settings = {
-      alias = {
-        authors = "shortlog --numbered --summary --format='%an <%ae>' --no-merges";
-        ci = "commit";
-        co = "checkout";
-        cl = "clean -ndx";
-        clcl = "clean -fdx";
-        d = "diff";
-        dc = "diff --cached";
-        fap = "fetch --all --prune";
-        fapp = "pull --all --prune --ff-only";
-        graph = "log --graph --decorate --all --oneline --format='%C(green bold)%h%Creset %C(yellow bold)[%ar]%Creset %C(red bold)%d%Creset %s %C(blue bold)<%an>%Creset'";
-        ls = "lsbranch";
-        mf = "merge --ff-only";
-        mfu = "merge --ff-only upstream/master";
-        s = "status";
-        wip = "!git add -A && git commit -m WIP";
-        unpushed = "log --branches --not --remotes=origin --remotes=upstream --no-walk --decorate --oneline";
-        unwip = "reset HEAD^";
-      };
+      alias =
+        let
+          color = color: value: "%C(${color})${value}%Creset";
+          green = color "green bold";
+          yellow = color "yellow bold";
+          blue = color "blue bold";
+          red = color "red bold";
+          mergeArgs = builtins.concatStringsSep " ";
+        in
+        {
+          authors = mergeArgs [
+            "shortlog"
+            "--no-merges"
+            "--numbered"
+            "--summary"
+            "--format='%an <%ae>'"
+          ];
+          ci = "commit";
+          co = "checkout";
+          cl = mergeArgs [
+            "clean"
+            "--dry-run"
+            "-d" # recurse into untracked directories
+            "-x" # allow removing ignored files
+          ];
+          clcl = mergeArgs [
+            "clean"
+            "--force"
+            "-d" # recurse into untracked directories
+            "-x" # allow removing ignored files
+          ];
+          d = "diff";
+          dc = mergeArgs [
+            "diff"
+            "--cached"
+          ];
+          fap = mergeArgs [
+            "fetch"
+            "--all"
+            "--prune"
+          ];
+          fapp = mergeArgs [
+            "pull"
+            "--all"
+            "--ff-only"
+            "--prune"
+          ];
+          graph = mergeArgs [
+            "log"
+            "--all"
+            "--decorate"
+            "--graph"
+            "--format='${green "%h"} ${yellow "[%ar]"} ${red "%d"} %s ${blue "<%an>"}'"
+          ];
+          ls = "lsbranch";
+          mf = mergeArgs [
+            "merge"
+            "--ff-only"
+          ];
+          s = "status";
+          wip = "!git add -A && git commit -m WIP";
+          unpushed = mergeArgs [
+            "log"
+            "--decorate"
+            "--no-walk"
+            "--oneline"
+            "--branches"
+            "--not"
+            "--remotes=origin"
+            "--remotes=upstream"
+          ];
+          unwip = "reset HEAD^";
+        };
       color.ui = "auto";
       core = {
         autocrlf = "input";
