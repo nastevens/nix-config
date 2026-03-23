@@ -33,6 +33,12 @@
         ''
       ];
 
+    signing = {
+      format = "ssh";
+      signByDefault = true;
+      signer = "${pkgs._1password-gui}/bin/op-ssh-sign";
+    };
+
     settings = {
       alias = {
         authors = "shortlog --numbered --summary --format='%an <%ae>' --no-merges";
@@ -79,19 +85,8 @@
       user = {
         name = "Nick Stevens";
         email = "nick@bitcurry.com";
+        signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH+lTG1ancKWBWdk/qgv0h+wGMfMWVcm9BNLw5RtpDXt";
       };
-
-      # Sign Git commits using key from 1Password
-      commit.gpgsign = true;
-      gpg = {
-        format = "ssh";
-        ssh = {
-          program = "${pkgs._1password-gui}/bin/op-ssh-sign";
-          allowedSignersFile = builtins.toPath ./git/allowed-signers;
-        };
-      };
-      user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH+lTG1ancKWBWdk/qgv0h+wGMfMWVcm9BNLw5RtpDXt";
-
     };
   };
 }
