@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -37,6 +37,8 @@
       name = "Sans";
       size = 11;
     };
+
+    gtk4.theme = config.gtk.theme;
   };
 
   wayland.windowManager.hyprland = {
