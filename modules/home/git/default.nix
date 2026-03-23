@@ -11,6 +11,15 @@
     git-utils
   ];
 
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      side-by-side = false;
+      line-numbers = true;
+    };
+  };
+
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -65,17 +74,6 @@
         eol = "lf";
         editor = "nvim";
         compression = -1;
-      };
-      delta = {
-        enable = true;
-        enableGitIntegration = true;
-        options = {
-          side-by-side = false;
-          line-numbers = true;
-          decorations = true;
-          plus-style = "syntax #004000";
-          plus-emph-style = "syntax #00A000";
-        };
       };
       init.defaultBranch = "main";
       merge.defaultToUpstream = true;
