@@ -6,7 +6,7 @@ let
       extraOptions ? [ ],
     }:
     {
-      device = "vash:/volume1/${name}";
+      device = "vash.stevens.lan:/volume1/${name}";
       fsType = "nfs";
       options = [
         "user"
