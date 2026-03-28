@@ -1,17 +1,15 @@
-= dts =
+= dts: RI =
 
 == Today's Intentions ==
-* [ ] Meditate
 * [ ] Regularly
   * [ ] Managed
-  * [ ] Bonus: all completed
+  * [ ] Completed
 
 == Meals ==
+* Breakfast:
 * Lunch:
 * Dinner:
 
-== After Work ==
-
-== Other Activities ==
+== Activities ==
 
 == Thoughts/Feelings ==
