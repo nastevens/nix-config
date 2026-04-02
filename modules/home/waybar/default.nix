@@ -1,98 +1,96 @@
 { ... }:
+
 {
   programs.waybar = {
     enable = true;
     systemd = {
-      enable = false;
-      target = "graphical-session.target";
+      enable = true;
+      targets = [ "graphical-session.target" ];
     };
-    style = builtins.readFile ./style.css;
-    settings = builtins.fromJSON (builtins.readFile ./config.json);
-    #      "layer" = "top";
-    #      "position" = "left";
-    #      modules-left = [
-    #        "custom/launcher"
-    #        "temperature"
-    #        #"mpd"
-    #        #"custom/cava-internal"
-    #      ];
-    #      modules-center = [ "clock" ];
-    #      modules-right = [
-    #        "pulseaudio"
-    #        "memory"
-    #        "cpu"
-    #        "network"
-    #        "custom/powermenu"
-    #        "tray"
-    #      ];
-    #      "custom/launcher" = {
-    #        "format" = " ";
-    #        "on-click" = "pkill rofi || rofi2";
-    #        #  "on-click-middle" = "exec default_wall";
-    #        #  "on-click-right" = "exec wallpaper_random";
-    #        "tooltip" = false;
-    #      };
-    #      #"custom/cava-internal" = {
-    #      #  "exec" = "sleep 1s && cava-internal";
-    #      #  "tooltip" = false;
-    #      #};
-    #      "pulseaudio" = {
-    #        "scroll-step" = 2;
-    #        "format" = "{icon} {volume}%";
-    #        "format-muted" = "󰖁";
-    #        "format-icons" = { "default" = [ "" "" "" ]; };
-    #        "on-click" = "pamixer -t";
-    #        "tooltip" = false;
-    #      };
-    #      "clock" = {
-    #        "interval" = 1;
-    #        #"format" = "{:%I:%M %p  %A %b %d}";
-    #        "tooltip" = true;
-    #        #"tooltip-format" = ''
-    #        #  {=%A; %d %B %Y}
-    #        #  <tt>{calendar}</tt>'';
-    #      };
-    #      "memory" = {
-    #        "interval" = 1;
-    #        "format" = "󰻠 {percentage}%";
-    #        "states" = { "warning" = 85; };
-    #      };
-    #      "cpu" = {
-    #        "interval" = 1;
-    #        "format" = "󰍛 {usage}%";
-    #      };
-    #      #"mpd" = {
-    #      #  "max-length" = 25;
-    #      #  "format" = "<span foreground='#bb9af7'></span> {title}";
-    #      #  "format-paused" = " {title}";
-    #      #  "format-stopped" = "<span foreground='#bb9af7'></span>";
-    #      #  "format-disconnected" = "";
-    #      #  "on-click" = "mpc --quiet toggle";
-    #      #  "on-click-right" = "mpc update; mpc ls | mpc add";
-    #      #  "on-click-middle" = "kitty --class='ncmpcpp' ncmpcpp ";
-    #      #  "on-scroll-up" = "mpc --quiet prev";
-    #      #  "on-scroll-down" = "mpc --quiet next";
-    #      #  "smooth-scrolling-threshold" = 5;
-    #      #  "tooltip-format" = "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
-    #      #};
-    #      "network" = {
-    #        "format-disconnected" = "󰯡 Disconnected";
-    #        "format-ethernet" = "󰒢 Connected!";
-    #        "format-linked" = "󰖪 {essid} (No IP)";
-    #        "format-wifi" = "󰖩 {essid}";
-    #        "interval" = 1;
-    #        "tooltip" = false;
-    #      };
-    #      "custom/powermenu" = {
-    #        "format" = "";
-    #        "on-click" =
-    #          "pkill rofi || ~/.config/rofi/powermenu/type-3/powermenu.sh";
-    #        "tooltip" = false;
-    #      };
-    #      "tray" = {
-    #        "icon-size" = 15;
-    #        "spacing" = 5;
-    #      };
-    #    }];
+    style = ./style.css;
+    settings.default = {
+      # --- Config ---
+      layer = "top";
+      position = "right";
+      exclusive = false;
+      spacing = 10;
+
+      # --- Layout ---
+      modules-left = [ ];
+      modules-center = [ ];
+      modules-right = [
+        "mpris"
+        "tray"
+        "network"
+        "pulseaudio"
+        "clock"
+      ];
+
+      # --- Modules ---
+      clock = {
+        format = "{:%H:%M}";
+        interval = 1;
+        tooltip = true;
+        tooltip-format = "<tt><small>{calendar}</small></tt>";
+        calendar = {
+          mode = "year";
+          mode-mon-col = 3;
+          weeks-pos = "right";
+          on-scroll = 1;
+          format = {
+            months = "<span color='#98c379'><b>{}</b></span>";
+            days = "<span color='#abb2bf'><b>{}</b></span>";
+            weeks = "<span color='#61afef'><b>W{}</b></span>";
+            weekdays = "<span color='#e5c07b'><b>{}</b></span>";
+            today = "<span color='#e06c75'><b>{}</b></span>";
+          };
+        };
+        actions = {
+          on-scroll-up = "shift_up";
+          on-scroll-down = "shift_down";
+        };
+
+      };
+
+      mpris = {
+        format = "{status_icon}";
+        format-paused = "{status_icon}";
+        format-tooltip = "{dynamic}";
+        status-icons = {
+          default = "▶";
+          paused = "⏸";
+        };
+      };
+
+      network = {
+        format-disconnected = "󰌙";
+        format-ethernet = "󰌘";
+        format-linked = "󰖪";
+        format-wifi = "󰖩";
+        interval = 1;
+        tooltip = false;
+      };
+
+      pulseaudio = {
+        format = " {volume}%";
+        format-icons = {
+          default = [
+            ""
+            ""
+            ""
+          ];
+        };
+        format-muted = "󰖁";
+        on-click = "pamixer -t";
+        scroll-step = 2;
+        tooltip = true;
+        tooltip-format = "{volume}%";
+      };
+
+      tray = {
+        icon-size = 15;
+        spacing = 5;
+      };
+    };
   };
 }

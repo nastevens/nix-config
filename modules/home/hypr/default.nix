@@ -8,7 +8,6 @@
     pamixer
     playerctl
     shotman
-    waybar
     wl-clipboard
     xdg-desktop-portal-hyprland
   ];
