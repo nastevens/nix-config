@@ -183,12 +183,9 @@
       AutofillAddressEnabled = false;
       AutofillCreditCardEnabled = false;
       Cookies.Allow = [
-        "https://google.com"
         "https://octopi.local"
         "https://pi.hole"
-        "https://printables.com"
         "https://proton.me"
-        "https://yahoo.com"
       ];
       DefaultDownloadDirectory = "\${home}/Downloads";
       DisplayBookmarksToolbar = "always";
