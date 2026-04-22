@@ -1,6 +1,6 @@
 = dts: RI =
 
-== Today's Intentions ==
+== Activities ==
 * [ ] Regularly
   * [ ] Managed
   * [ ] Completed
@@ -10,6 +10,4 @@
 * Lunch:
 * Dinner:
 
-== Activities ==
-
-== Thoughts/Feelings ==
+== Notes ==
