@@ -272,6 +272,10 @@
       "services.sync.engine.prefs" = false;
       "services.sync.engine.tabs" = true;
 
+      # pdfjs settings
+      "pdfjs.defaultZoomValue" = "page-width";
+      "pdfjs.sidebarViewOnLoad" = 0;
+
       # Layout toolbar
       "browser.uiCustomization.state" = builtins.toJSON {
         placements = {
