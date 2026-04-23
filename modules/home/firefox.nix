@@ -253,6 +253,8 @@
       "network.protocol-handler.external.mailto" = false;
 
       # Use vertical tabs
+      "sidebar.animation.enabled" = false;
+      "sidebar.animation.expand-on-hover.delay-duration-ms" = 500;
       "sidebar.revamp" = true;
       "sidebar.verticalTabs" = true;
       "sidebar.visibility" = "expand-on-hover";
