@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./chawan.nix
     ./cli.nix
     ./git
     ./tealdeer.nix
