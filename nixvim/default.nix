@@ -354,7 +354,7 @@
     vim-commentary
 
     # Colorize hex codes.
-    colorizer
+    nvim-colorizer-lua
 
     # Delete buffers without losing windows (Bdelete/Bwipeout).
     bufdelete-nvim
