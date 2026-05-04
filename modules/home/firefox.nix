@@ -15,7 +15,7 @@
         makeContainers =
           containerList:
           builtins.listToAttrs (
-            lib.imap0 (i: c: {
+            lib.imap1 (i: c: {
               inherit (c) name;
               value = {
                 inherit (c) color icon;
@@ -28,16 +28,6 @@
         {
           name = "Amazon Music";
           color = "green";
-          icon = "circle";
-        }
-        {
-          name = "Amazon Shopping";
-          color = "pink";
-          icon = "cart";
-        }
-        {
-          name = "Google";
-          color = "blue";
           icon = "circle";
         }
         {
