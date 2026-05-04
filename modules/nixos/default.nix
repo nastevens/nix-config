@@ -35,6 +35,7 @@ in
       { ... }:
       {
         home-manager = {
+          backupFileExtension = "hmbak";
           useGlobalPkgs = true;
           useUserPackages = true;
           users.${config.me.username}.imports = [
