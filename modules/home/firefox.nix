@@ -8,6 +8,9 @@
   programs.firefox = {
     enable = true;
 
+    # TODO: configPath = "${config.xdg.configHome}/mozilla/firefox";
+    configPath = ".config/mozilla/firefox";
+
     # --- Containers ---
     profiles.nick.containersForce = true;
     profiles.nick.containers =
