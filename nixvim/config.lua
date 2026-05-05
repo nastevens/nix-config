@@ -358,6 +358,16 @@ do
     vim.cmd("iabbrev <expr> dtt strftime('%H:%M:%S')")
 end
 
+-- Useful character abbreviations
+do
+    vim.cmd("iabbrev udeg °")
+    vim.cmd("iabbrev u14 ¼")
+    vim.cmd("iabbrev u12 ½")
+    vim.cmd("iabbrev u34 ¾")
+    vim.cmd("iabbrev u13 ⅓")
+    vim.cmd("iabbrev u23 ⅔")
+end
+
 -- Load Telescope plugins
 do
     require("neoclip").setup()
