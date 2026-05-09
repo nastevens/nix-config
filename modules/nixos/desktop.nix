@@ -23,6 +23,11 @@ in
     )
   ];
 
+  documentation.man = {
+    enable = true;
+    cache.enable = true;
+  };
+
   fonts.packages = with pkgs; [
     dejavu_fonts
     nerd-fonts.mononoki
