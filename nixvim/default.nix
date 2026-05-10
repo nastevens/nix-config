@@ -418,39 +418,56 @@
 
   keymaps =
     let
-      normalBind = key: action: {
-        inherit key action;
-        mode = "n";
+      bindRaw = (
+        {
+          actionMap ? lib.id,
+          keyMap ? lib.id,
+          mode ? "n",
+          outputMap ? lib.id,
+        }:
+        (
+          key: action:
+          outputMap {
+            inherit mode;
+            action = (actionMap action);
+            key = (keyMap key);
+          }
+        )
+      );
+      bindMode =
+        mode: key: action:
+        (bindRaw { mode = lib.stringToCharacters mode; }) key action;
+
+      bind = bindRaw { };
+      bindLua = bindRaw { actionMap = lib.nixvim.mkRaw; };
+      bindLeader = bindRaw { keyMap = key: "<leader>${key}"; };
+      bindLsp = bindRaw { keyMap = key: "<space>${key}"; };
+      bindLspLua = bindRaw {
+        keyMap = key: "<space>${key}";
+        actionMap = lib.nixvim.mkRaw;
       };
-      normalBindLua = key: action: normalBind key (lib.nixvim.mkRaw action);
-      leaderBind = key: action: normalBind "<leader>${key}" action;
-      #leaderBindLua = key: action: normalBindLua "<leader>${key}" action;
-      lspBind = key: action: normalBind "<space>${key}" action;
-      lspBindLua = key: action: normalBindLua "<space>${key}" action;
-      nopasteBind =
-        key: action:
-        normalBind key "<cmd>set paste<cr>m`${action}<esc>``<cmd>set nopaste<cr>"
-        // {
-          options.silent = true;
-        };
+      bindNoPaste = bindRaw {
+        actionMap = action: "<cmd>set paste<cr>m`${action}<esc>``<cmd>set nopaste<cr>";
+        outputMap = output: output // { options.silent = true; };
+      };
     in
     [
-      (nopasteBind "<c-j>" "o")
-      (nopasteBind "<c-k>" "O")
-      (nopasteBind "<space><space>" "i ")
+      (bindNoPaste "<c-j>" "o")
+      (bindNoPaste "<c-k>" "O")
+      (bindNoPaste "<space><space>" "i ")
 
-      (leaderBind "n" "<cmd>NvimTreeToggle<cr>")
-      (leaderBind "sp" "<cmd>setlocal invspell<cr>")
+      (bindLeader "n" "<cmd>NvimTreeToggle<cr>")
+      (bindLeader "sp" "<cmd>setlocal invspell<cr>")
 
-      (lspBindLua "a" "vim.lsp.buf.code_action")
-      (lspBindLua "d" "vim.lsp.buf.definition")
-      (lspBindLua "f" "vim.lsp.buf.format")
-      (lspBindLua "m" "vim.lsp.buf.rename")
-      (lspBindLua "r" "vim.lsp.buf.references")
-      (lspBindLua "j" "vim.diagnostic.goto_prev")
-      (lspBindLua "k" "vim.diagnostic.goto_next")
+      (bindLspLua "a" "vim.lsp.buf.code_action")
+      (bindLspLua "d" "vim.lsp.buf.definition")
+      (bindLspLua "f" "vim.lsp.buf.format")
+      (bindLspLua "m" "vim.lsp.buf.rename")
+      (bindLspLua "r" "vim.lsp.buf.references")
+      (bindLspLua "j" "vim.diagnostic.goto_prev")
+      (bindLspLua "k" "vim.diagnostic.goto_next")
 
-      (normalBindLua "K" ''
+      (bindLua "K" ''
         function()
             local filetype = vim.bo.filetype
             if vim.tbl_contains({ "vim", "help" }, filetype) then
@@ -476,9 +493,10 @@
       #(leaderBindLua "l3" "CodeoptionsOverlength(200)")
       #(leaderBindLua "lo" "CodeoptionsOverlength(nil)")
 
-      (lspBind "c" "<cmd>RustLsp openCargo<cr>")
-      (lspBind "x" "<cmd>RustLsp runnables<cr>")
-      (normalBind "<C-M-j>" "<cmd>RustLsp moveItem down<cr>")
-      (normalBind "<C-M-k>" "<cmd>RustLsp moveItem up<cr>")
+      # Rust LSP
+      (bindLsp "c" "<cmd>RustLsp openCargo<cr>")
+      (bindLsp "x" "<cmd>RustLsp runnables<cr>")
+      (bind "<C-M-j>" "<cmd>RustLsp moveItem down<cr>")
+      (bind "<C-M-k>" "<cmd>RustLsp moveItem up<cr>")
     ];
 }
