@@ -498,5 +498,13 @@
       (bindLsp "x" "<cmd>RustLsp runnables<cr>")
       (bind "<C-M-j>" "<cmd>RustLsp moveItem down<cr>")
       (bind "<C-M-k>" "<cmd>RustLsp moveItem up<cr>")
+
+      # Leap
+      (bindMode "nxo" "s" "<Plug>(leap)")
+      (bindMode "n" "S" "<Plug>(leap-from-window)")
+      (bindMode "no" "gs" "<Plug>(leap-remote)")
+      (bindMode "no" "gS" "<Plug>(leap-remote-linewise)")
+      (bindMode "xo" "ar" "<Plug>(leap-remote-text-object)")
+      (bindMode "xo" "ir" "<Plug>(leap-remote-inner-text-object)")
     ];
 }

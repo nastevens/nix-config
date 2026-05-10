@@ -371,6 +371,35 @@ do
     require("telescope").load_extension("emoji")
 end
 
+-- Leap
+do
+    -- Set automatic paste after yanking:
+    vim.api.nvim_create_autocmd("User", {
+        pattern = "RemoteOperationDone",
+        group = vim.api.nvim_create_augroup("LeapRemote", {}),
+        callback = function(event)
+            if vim.v.operator == "y" and event.data.register == '"' then
+                vim.cmd("normal! p")
+            end
+        end,
+    })
+
+    -- Define a preview filter to reduce visual noise and the blinking effect
+    -- after the first keypress.
+    require("leap").opts.preview = function(ch0, ch1, ch2)
+        return not (
+            ch1:match("%s")
+            or (ch0:match("%a") and ch1:match("%a") and ch2:match("%a"))
+        )
+    end
+
+    vim.keymap.set({ "x", "o" }, "an", function()
+        require("leap.treesitter").select {
+            opts = require("leap.user").with_traversal_keys("n", "N"),
+        }
+    end)
+end
+
 -- Hydra
 do
     local Hydra = require("hydra")
