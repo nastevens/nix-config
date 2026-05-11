@@ -49,6 +49,31 @@
         colors.primary.background = "#000000";
         env.TERM = "xterm-256color";
         font = fontConfig "Mononoki Nerd Font" 11;
+        selection.save_to_clipboard = true;
+
+        # These map to a raw XTerm-specific control sequence that actually
+        # sends a CR with the specified modifier keys:
+        #  2 = Shift
+        #  3 = Alt
+        #  4 = Shift + Alt
+        #  5 = Control
+        #  6 = Shift + Control
+        #  7 = Alt + Control
+        #  8 = Shift + Alt + Control
+        keyboard.bindings = [
+          {
+            key = "Return";
+            mods = "Shift";
+            chars = builtins.fromJSON ''"\u001b[13;2u"'';
+          }
+          {
+            key = "Return";
+            mods = "Control";
+            chars = builtins.fromJSON ''"\u001b[13;5u"'';
+          }
+        ];
+
+        # Clickable links for matching patterns
         hints.enabled = [
           {
             # Open URLs in browser.
@@ -88,7 +113,6 @@
             };
           }
         ];
-        selection.save_to_clipboard = true;
       };
     };
 }
