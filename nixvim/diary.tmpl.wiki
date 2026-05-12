@@ -1,13 +1,12 @@
-= dts: RI =
+= dts: R99 =
+
+== Tasks ==
 
 == Activities ==
-* [ ] Regularly
-  * [ ] Managed
-  * [ ] Completed
 
 == Meals ==
 * Breakfast:
 * Lunch:
 * Dinner:
 
-== Notes ==
+== Other Notes ==
