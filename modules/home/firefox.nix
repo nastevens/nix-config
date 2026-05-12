@@ -250,7 +250,9 @@
       "sidebar.animation.expand-on-hover.delay-duration-ms" = 500;
       "sidebar.revamp" = true;
       "sidebar.verticalTabs" = true;
-      "sidebar.visibility" = "expand-on-hover";
+      # I'd prefer this, but it's really glitchy on Linux/Hyprland right now
+      # "sidebar.visibility" = "expand-on-hover";
+      "sidebar.visibility" = "always-show";
 
       # No startup page
       "browser.startup.homepage" = "chrome://browser/content/blanktab.html";
