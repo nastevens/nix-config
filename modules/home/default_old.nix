@@ -47,18 +47,20 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks."*" = {
-      addKeysToAgent = "no";
-      compression = false;
-      controlMaster = "no";
-      controlPath = "~/.ssh/master-%r@%n:%p";
-      controlPersist = "no";
-      forwardAgent = false;
-      hashKnownHosts = false;
-      identityAgent = "~/.1password/agent.sock";
-      serverAliveCountMax = 3;
-      serverAliveInterval = 60;
-      userKnownHostsFile = "~/.ssh/known_hosts";
+    settings = {
+      "*" = {
+        "AddKeysToAgent" = false;
+        "Compression" = false;
+        "ControlMaster" = false;
+        "ControlPath" = "~/.ssh/master-%r@%n:%p";
+        "ControlPersist" = false;
+        "ForwardAgent" = false;
+        "HashKnownHosts" = false;
+        "IdentityAgent" = "~/.1password/agent.sock";
+        "ServerAliveCountMax" = 3;
+        "ServerAliveInterval" = 60;
+        "UserKnownHostsFile" = "~/.ssh/known_hosts";
+      };
     };
   };
 
