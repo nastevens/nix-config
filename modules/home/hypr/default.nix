@@ -43,6 +43,8 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
+    # TODO: can be changed to "lua" with config update
+    configType = "hyprlang";
     extraConfig = builtins.readFile ./hyprland.conf;
   };
 
