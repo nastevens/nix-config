@@ -1,9 +1,14 @@
 { pkgs, ... }:
 
 {
-  programs.gpg.enable = true;
+  programs.gpg = {
+    enable = true;
+    # TODO: specify as XDG data directory
+    # homedir = "";
+    mutableKeys = false;
+  };
   services.gpg-agent = {
     enable = true;
-    pinentryPackage = pkgs.pinentry-tty;
+    pinentry.package = pkgs.pinentry-tty;
   };
 }

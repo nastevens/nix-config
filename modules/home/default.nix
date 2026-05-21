@@ -5,6 +5,7 @@
     ./chawan.nix
     ./cli.nix
     ./git
+    ./gpg.nix
     ./tealdeer.nix
     ./tmux
     ./yazi.nix
