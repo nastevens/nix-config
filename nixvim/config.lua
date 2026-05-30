@@ -300,7 +300,7 @@ do
             return {
                 "= " .. name .. " =",
                 "",
-                "== Reference ==",
+                "== Notes ==",
             }
         end
 
