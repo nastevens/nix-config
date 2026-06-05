@@ -1,30 +1,31 @@
+lockfile := "flake.lock"
+
 # List available justfile jobs
 default:
   @just --list --justfile {{justfile()}}
 
-# Build NixOS and hot-switch to the new configuration
-switch:
-  sudo nixos-rebuild switch --flake .
+# Update input flake versions
+up:
+  nix flake update
+  git diff --quiet -- {{lockfile}} && \
+    git diff --staged --quiet -- {{lockfile}} || \
+    git commit -m "nix: update flake.lock" -- {{lockfile}}
+
+# Build NixOS with high verbosity. Extra arguments are passed nixos-rebuild
+build *args:
+  nixos-rebuild build --flake . --no-link --show-trace {{args}}
 
 # Build NixOS and use it on the next boot
 boot:
   sudo nixos-rebuild boot --flake .
 
-# Build NixOS
-build:
-  nixos-rebuild build --flake .
-
-# Build NixOS with verbose error output
-debug:
-  nixos-rebuild build --flake . --show-trace --verbose
-
-# Update input flake versions
-up:
-  nix flake update
+# Build NixOS and hot-switch to the new configuration
+switch:
+  sudo nixos-rebuild switch --flake .
 
 # Update specific input
-upp input:
-  nix flake update {{input}}
+upp +inputs:
+  nix flake update {{inputs}}
 
 # Start a Nix REPL
 repl:
