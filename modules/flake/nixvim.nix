@@ -13,6 +13,9 @@
       nixvimConfigurations = {
         nicksvim = inputs.nixvim.lib.evalNixvim {
           inherit system;
+          extraSpecialArgs = {
+            inherit (inputs) nixpkgs;
+          };
           modules = [
             "${self}/nixvim"
           ];

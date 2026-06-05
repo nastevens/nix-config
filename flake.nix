@@ -18,10 +18,7 @@
     };
     nixos-unified.url = "github:srid/nixos-unified";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixvim = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/nixvim";
-    };
+    nixvim.url = "github:nix-community/nixvim";
   };
 
   outputs =

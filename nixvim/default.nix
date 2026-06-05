@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  nixpkgs,
+  pkgs,
+  ...
+}:
 {
   colorschemes.onedark.enable = true;
   opts = {
@@ -507,4 +512,7 @@
       (bindMode "xo" "ar" "<Plug>(leap-remote-text-object)")
       (bindMode "xo" "ir" "<Plug>(leap-remote-inner-text-object)")
     ];
+
+  # nixvim requires this instead of directly in flake.inputs
+  nixpkgs.source = nixpkgs;
 }
