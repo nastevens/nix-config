@@ -25,7 +25,7 @@
       url = "github:srid/nixos-unified";
     };
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
+      url = "github:NixOS/nixpkgs/nixos-26.05";
     };
     nixvim = {
       url = "github:nix-community/nixvim";
