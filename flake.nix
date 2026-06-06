@@ -2,23 +2,40 @@
   description = "Nick's Nix";
 
   inputs = {
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    github-gitignore = {
-      flake = false;
-      url = "github:github/gitignore";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
     };
-    hardware.url = "github:nixos/nixos-hardware";
+    github-gitignore = {
+      url = "github:github/gitignore";
+      flake = false;
+    };
+    hardware = {
+      url = "github:nixos/nixos-hardware";
+    };
     home-manager = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprportal = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
     };
-    nixos-unified.url = "github:srid/nixos-unified";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixvim.url = "github:nix-community/nixvim";
+    nixos-unified = {
+      url = "github:srid/nixos-unified";
+    };
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.systems.follows = "systems";
+    };
+    systems = {
+      url = "github:nix-systems/default-linux";
+    };
   };
 
   outputs =
