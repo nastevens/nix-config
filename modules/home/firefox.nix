@@ -289,6 +289,7 @@
             "screenshot-button"
             "downloads-button"
             "firefox-view-button"
+            "alltabs-button"
             "_testpilot-containers-browser-action"
             "vertical-spacer"
             "urlbar-container"
