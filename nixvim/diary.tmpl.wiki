@@ -1,11 +1,10 @@
-= dts: R99 =
+= dts: Rxx =
 
 == Tasks ==
 
 == Activities ==
 
 == Meals ==
-* Breakfast:
 * Lunch:
 * Dinner:
 
