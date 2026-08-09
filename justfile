@@ -4,6 +4,11 @@ lockfile := "flake.lock"
 default:
   @just --list --justfile {{justfile()}}
 
+version:
+  @echo "nixos: " "$(nixos-version)"
+  @echo "active:" "$(nixos-version --configuration-revision | cut -c-7)"
+  @echo "commit:" "$(git rev-parse --short HEAD)"
+
 # Update input flake versions
 up:
   nix flake update

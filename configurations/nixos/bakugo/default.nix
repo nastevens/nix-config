@@ -25,5 +25,8 @@ in
 
   nixpkgs.hostPlatform = "x86_64-linux";
 
-  system.stateVersion = "23.11";
+  system = {
+    configurationRevision = self.rev or "${self.rev}-dirty";
+    stateVersion = "23.11";
+  };
 }
