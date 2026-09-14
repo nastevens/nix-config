@@ -64,5 +64,4 @@ clean-kondo:
 
 # Print active gc-roots (i.e. root directories that nix won't clean up)
 gc-roots:
-    sudo -i nix-store --gc --print-roots | \
-      egrep -v '^(/nix/var|/run/current-system|/run/booted-system|/proc|{memory|{censored)'
+    @nix-store --gc --print-roots | tr -d '"' | egrep -v '^(/proc)'
