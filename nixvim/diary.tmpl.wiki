@@ -1,4 +1,4 @@
-= dts: Rxx =
+= dts: Sxx-Exx, =
 
 == Tasks ==
 
@@ -7,5 +7,3 @@
 == Meals ==
 * Lunch:
 * Dinner:
-
-== Notes ==
