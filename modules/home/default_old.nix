@@ -29,7 +29,6 @@
     libreoffice-qt
     wally-cli
     xarchiver
-    zoom-us
 
     # creative
     gimp

@@ -18,7 +18,6 @@ in
           "steam"
           "steam-unwrapped"
           "vista-fonts"
-          "zoom"
         ];
     };
     overlays = lib.attrValues self.overlays;
