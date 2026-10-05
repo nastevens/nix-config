@@ -6,6 +6,7 @@ let
 in
 {
   imports = [
+    ./factorio.nix
     ./i18n.nix
     ./ssh.nix
     ./tailscale.nix

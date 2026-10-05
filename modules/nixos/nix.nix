@@ -14,6 +14,7 @@ in
           "1password-cli"
           "1password-gui"
           "discord"
+          "factorio-headless"
           "slack"
           "steam"
           "steam-unwrapped"
