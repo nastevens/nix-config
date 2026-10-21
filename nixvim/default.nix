@@ -83,7 +83,10 @@
       desc = "Template for new vimwiki diary files.";
       event = [ "BufNewFile" ];
       pattern = [ "*/vimwiki/diary/*.wiki" ];
-      command = ''silent 0r ${./diary.tmpl.wiki} | exe "1,1s/dts/" .. expand('%:t:r') .. "/"'';
+      command =
+        ''silent 0read ${./diary.tmpl.wiki}''
+        + ''| exe "1,1s/dts/" .. expand('%:t:r') .. "/"''
+        + ''| exe "$,$d"'';
     }
   ];
 
