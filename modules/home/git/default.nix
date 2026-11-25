@@ -58,6 +58,11 @@
           red = color "red bold";
         in
         {
+          amend = ''
+            !f() {
+              git commit --amend --no-edit
+            }; f
+          '';
           authors = ''
             !f() {
               git shortlog \
