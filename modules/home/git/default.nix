@@ -92,6 +92,12 @@
                 --cached
             }; f
           '';
+          drop = ''
+            !f() {
+              git show --no-patch --oneline HEAD
+              git reset --hard HEAD~1
+            }; f
+          '';
           fap = ''
             !f() {
               git fetch \
