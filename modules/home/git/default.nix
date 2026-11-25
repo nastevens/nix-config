@@ -56,71 +56,89 @@
           yellow = color "yellow bold";
           blue = color "blue bold";
           red = color "red bold";
-          mergeArgs = builtins.concatStringsSep " ";
         in
         {
-          authors = mergeArgs [
-            "shortlog"
-            "--no-merges"
-            "--numbered"
-            "--summary"
-            "--format='%an <%ae>'"
-          ];
+          authors = ''
+            !f() {
+              git shortlog \
+                --no-merges \
+                --numbered \
+                --summary \
+                --format='%an <%ae>'
+            }; f
+          '';
           ci = "commit";
           co = "checkout";
-          cl = mergeArgs [
-            "clean"
-            "--dry-run"
-            "-d" # recurse into untracked directories
-            "-x" # allow removing ignored files
-          ];
-          clcl = mergeArgs [
-            "clean"
-            "--force"
-            "-d" # recurse into untracked directories
-            "-x" # allow removing ignored files
-          ];
+          cl = ''
+            !f() {
+              git clean \
+                --dry-run \
+                -d \
+                -x
+            }; f
+          '';
+          clcl = ''
+            !f() {
+              git clean \
+                --force \
+                -d \
+                -x
+            }; f
+          '';
           d = "diff";
-          dc = mergeArgs [
-            "diff"
-            "--cached"
-          ];
-          fap = mergeArgs [
-            "fetch"
-            "--all"
-            "--prune"
-          ];
-          fapp = mergeArgs [
-            "pull"
-            "--all"
-            "--ff-only"
-            "--prune"
-          ];
-          graph = mergeArgs [
-            "log"
-            "--all"
-            "--decorate"
-            "--graph"
-            "--format='${green "%h"} ${yellow "[%ar]"} ${red "%d"} %s ${blue "<%an>"}'"
-          ];
+          dc = ''
+            !f() {
+              git diff \
+                --cached
+            }; f
+          '';
+          fap = ''
+            !f() {
+              git fetch \
+                --all \
+                --prune
+            }; f
+          '';
+          graph = ''
+            !f() {
+              git log \
+                --all \
+                --decorate \
+                --graph \
+                --format='${green "%h"} ${yellow "[%ar]"} ${red "%d"} %s ${blue "<%an>"}'
+            }; f
+          '';
           ls = "lsbranch";
-          mf = mergeArgs [
-            "merge"
-            "--ff-only"
-          ];
+          mf = ''
+            !f() {
+              git merge \
+                --ff-only
+            }; f
+          '';
           s = "status";
-          wip = "!git add -A && git commit -m WIP";
-          unpushed = mergeArgs [
-            "log"
-            "--decorate"
-            "--no-walk"
-            "--oneline"
-            "--branches"
-            "--not"
-            "--remotes=origin"
-            "--remotes=upstream"
-          ];
-          unwip = "reset HEAD^";
+          wip = ''
+            !f() {
+              git add -A
+              git commit -m WIP
+            }; f
+          '';
+          unpushed = ''
+            !f() {
+              git log \
+                --decorate \
+                --no-walk \
+                --oneline \
+                --branches \
+                --not \
+                --remotes=origin \
+                --remotes=upstream
+            }; f
+          '';
+          unwip = ''
+            !f() {
+              git reset HEAD~1
+            }; f
+          '';
         };
       color.ui = "auto";
       core = {
